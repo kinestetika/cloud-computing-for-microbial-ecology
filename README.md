@@ -12,7 +12,7 @@ Cloud computing offers many advantages for the processing metagenomics data:
 
 # Status
 1. (done) create a custom arch linux image on gcloud
-2. (done) install programs
+2. (done) install programs (see wiki for list)
 3. (in progress) test and benchmark installed programs
 4. (planned) explore other cloud providers, such as AWS and UpCloud
 5. (planned) share images with microbial ecology community
