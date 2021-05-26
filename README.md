@@ -2,7 +2,7 @@
 Development of Cloud Compute Images for Microbial Ecology
 
 # Why cloud computing?
-Cloud computing offers many advantages for the processing metagenomics data:
+Cloud computing offers many advantages for processing metagenomics data:
 1. No need to purchase and maintain expensive local compute infrastructure. This is especially important for small groups with limited budgets.
 2. No scheduler. No queue. Saves costs and time while debugging pipelines and code.
 3. Compute images for cloud community can be a community resource, saving time installing and updating software and databases.
