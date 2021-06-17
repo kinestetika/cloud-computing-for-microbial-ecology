@@ -11,8 +11,8 @@ Cloud computing offers many advantages for processing metagenomics data:
 6. Rapid access to NCBI data, but this only applies to Google Cloud and Amazon Web Services.
 
 # Status
-1. (done) Create a custom arch linux image on gcloud. See ()[Installing the Operating System].
-2. (done) Install programs and databases. See wiki - [[Scope and list of programs]], [[Installing all the Programs]], [[Installing all the Databases]].
-3. (done) Share images with microbial ecology community. See [wiki](https://github.com/kinestetika/cloud-computing-for-microbial-ecology/wiki/Firing-up-your-own-Cloud-Server).
+1. (done) Create a custom arch linux image on gcloud. Check out this [wiki](https://github.com/kinestetika/cloud-computing-for-microbial-ecology/wiki/Installing-the-Operating-System) page.
+2. (done) Install programs and databases. See wiki - Check out this [wiki](https://github.com/kinestetika/cloud-computing-for-microbial-ecology/wiki/Scope-and-List-of-Programs) page.
+3. (done) Share images with microbial ecology community. Check out this [wiki](https://github.com/kinestetika/cloud-computing-for-microbial-ecology/wiki/Firing-up-your-own-Cloud-Server) page.
 4. (in progress) Test and benchmark installed programs.
 5. (in progress) Explore other cloud providers, such as AWS and UpCloud.
