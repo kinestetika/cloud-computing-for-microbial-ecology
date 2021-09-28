@@ -60,7 +60,7 @@ rm $NAME.tar.gz
 #
 #################################
 VERSION=2.30.0
-NAME=bedtools.static.binary
+NAME=bedtools
 WWW=https://github.com/arq5x/bedtools2
 
 echo "################################################################################################"
@@ -68,8 +68,13 @@ echo "Fetching, unpacking and compiling $NAME..."
 echo "In case this is no longer the latest version, check out ${WWW}, and edit this script accordingly."
 echo "################################################################################################"
 
-wget https://github.com/arq5x/bedtools2/releases/download/v${VERSION}/bedtools.static.binary
-ln -s $NAME bedtools
+
+wget https://github.com/arq5x/bedtools2/releases/download/v${VERSION}/bedtools-${VERSION}.tar.gz
+tar -xf bedtools-${VERSION}.tar.gz
+cd bedtools2
+make
+cd ..
+rm bedtools-${VERSION}.tar.gz
 
 #################################
 #

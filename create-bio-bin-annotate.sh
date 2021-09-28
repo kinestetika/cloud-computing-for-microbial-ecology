@@ -60,6 +60,7 @@ JSON \
 Number::Format \
 Statistics::Descriptive \
 File::Slurp \
+File::Slurper \
 MCE::Mutex \
 threads \
 YAML \

@@ -52,22 +52,6 @@ rm pf${VERSION}.tar.gz
 
 #################################
 #
-# metaamp
-#
-#################################
-VERSION=2
-NAME=metaamp
-WWW=https://github.com/xiaoli-dong/metaamp
-
-echo "################################################################################################"
-echo "Fetching, unpacking and compiling $NAME..."
-echo "In case this is no longer the latest version, check out ${WWW}, and edit this script accordingly."
-echo "################################################################################################"
-
-git clone https://github.com/xiaoli-dong/${NAME}.git
-
-#################################
-#
 # rRNAFinder
 #
 #################################
@@ -123,5 +107,26 @@ unzip $NAME.zip
 rm $NAME.zip
 rm -r __MACOSX
 
+#################################
+#
+# metaamp
+#
+#################################
+VERSION=2
+NAME=metaamp
+WWW=https://github.com/xiaoli-dong/metaamp
 
+echo "################################################################################################"
+echo "Fetching, unpacking and compiling $NAME..."
+echo "In case this is no longer the latest version, check out ${WWW}, and edit this script accordingly."
+echo "################################################################################################"
 
+git clone https://github.com/xiaoli-dong/${NAME}.git
+
+mkdir metaamp/bin/programs
+ln -s /bio/bin/ribosomal/mothur/ metaamp/bin/programs/
+
+echo "Metaamp needs code edits to run. Best to do manually."
+echo "In file get_diversity.pl, comment out the line $projDir =~ s/\/bin//;"
+echo "In file global.pl,  comment out the line $projDir =~ s/\/bin//;"
+echo "getOTUTaxonTable.relabund.pl, change line 96 to if(exists $table{"$prefix\_$otuid"}->{$sample} && $totals{$sample}>0){"
