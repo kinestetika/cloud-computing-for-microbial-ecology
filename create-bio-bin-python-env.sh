@@ -62,6 +62,7 @@ pip3 install --upgrade EukRep
 pip3 install --upgrade gtdbtk
 pip3 install --upgrade instrain
 pip3 install --upgrade iRep
+pip3 install --upgrade calisp
 pip3 install https://github.com/RasmussenLab/vamb/archive/3.0.3.zip
 pip3 install --upgrade scikit-learn imbalanced-learn pandas seaborn screed click mamba ruamel.yaml snakemake
 

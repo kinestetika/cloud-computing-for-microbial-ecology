@@ -33,6 +33,8 @@ fi
 
 echo "Here we create local installation of perl modules needed for all programs"
 echo "This will take some time..."
+echo "Before you continue, make sure to first run /usr/bin/core_perl/cpan"
+echo "Accept all default options. Logout and login and re-run this script..."
 read -p 'Do perl modules need update or install (Y/n)?' INSTALL_PERL_MODULES
 
 case $INSTALL_PERL_MODULES in
