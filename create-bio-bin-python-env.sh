@@ -91,6 +91,27 @@ chmod a+x "MinPath.py"
 cd ..
 ln -s MinPath/MinPath.py bin
 
+SIGNALP_VERSION=6.0
+
+echo "Installation of signalp $SIGNALP_VERSION..."
+echo "For signalp (and tmhmm), go to https://services.healthtech.dtu.dk/software.php"
+echo "for agreeing to licences and download. Download the two programs to a directory."
+echo "If versions have change you need to change this script."
+
+read -p 'Do you wish to install signalp (Y/n)?' INSTALL_SIGNALP
+case $INSTALL_SIGNALP in
+n)
+echo "Skipping install of signalp..."
+;;
+*)
+read -p 'To which directory have you downloaded signalp? ' DOWLOAD_DIR
+echo "Installing signalp into the python environment (previously created by create-bio-bin-python-env.sh)." 
+
+cp "$DOWLOAD_DIR/signalp-${SIGNALP_VERSION}.fast.tar.gz" .
+tar -zxvf signalp-${SIGNALP_VERSION}.fast.tar.gz
+
+pip install signalp6_fast/signalp-6-package
+
 #################################
 #
 # leave the virtual environment

@@ -54,8 +54,6 @@ DBI \
 File::Copy::Recursive \
 HTML::Entities \
 LWP::Protocol::https \
-SWISS::Entry \
-SWISS::KW \
 LWP::Simple \
 FindBin \
 JSON \
@@ -73,11 +71,10 @@ wget https://sourceforge.net/projects/swissknife/files/latest/download
 tar -zxf download
 cd swissknife_1.80
 perl Makefile.PL cloud
-rm -rf /bio/bin/perl/lib/perl5
 cp -r lib/SWISS /bio/bin/perl/lib/perl5
 cd ..
 rm download
-
+rm -rf swissknife_1.80
 ;;
 esac
 
@@ -100,17 +97,20 @@ cd "/bio/bin/annotate"
 # signalp and tmhmm
 #
 #################################
-SIGNALP_VERSION=6.0
 TMHMM_VERSION=2.0c
 
-echo "Installing signalp $SIGNALP_VERSION and tmhmm TMHMM_VERSION..."
-echo "For, tmhmmm and signalp need, go to https://services.healthtech.dtu.dk/software.php"
+echo "Installation of tmhmm TMHMM_VERSION..."
+echo "For tmhmmm (and signalp), go to https://services.healthtech.dtu.dk/software.php"
+echo "for agreeing to licences and download. Download the program to a directory."
 echo "If versions have change you need to change this script."
-echo "for agreeing to licences and download. Download the two programs to a directory." 
-read -p 'To which directory have you downloaded? ' DOWLOAD_DIR
+read -p 'Do you wish to install TMHMM (Y/n)?' INSTALL_TMHMM
+case $INSTALL_TMHMM in
+n)
+echo "Skipping install of TMHMM..."
+;;
+*)
+read -p 'To which directory have you downloaded TMHMM? ' DOWLOAD_DIR
 cp "$DOWLOAD_DIR/tmhmm-${TMHMM_VERSION}.Linux.tar.gz" "/bio/bin/annotate"
-cp "$DOWLOAD_DIR/signalp-${SIGNALP_VERSION}.fast.tar.gz" "/bio/bin/annotate"
-
 cd "/bio/bin/annotate"
 
 tar -zxvf tmhmm-${TMHMM_VERSION}.Linux.tar.gz
@@ -118,14 +118,8 @@ sed -i -e 's/\/usr\/local\/bin\/perl/\/usr\/bin\/perl/' "tmhmm-${TMHMM_VERSION}/
 sed -i -e 's/\/usr\/local\/bin\/perl/\/usr\/bin\/perl/' "tmhmm-${TMHMM_VERSION}/bin/tmhmmformat.pl"
 rm tmhmm-${TMHMM_VERSION}.Linux.tar.gz
 ln -s "tmhmm-${TMHMM_VERSION}" tmhmm
-
-echo "Installing signalp into the python environment (previously created by create-bio-bin-python-env.sh)." 
-
-tar -zxvf signalp-${SIGNALP_VERSION}.fast.tar.gz
-source /bio/bin/python-env/bin/activate
-pip install signalp6_fast/signalp-6-package
-deactivate
-
+;;
+esac
 #################################
 #
 # prokka
