@@ -28,7 +28,7 @@ fi
 
 if [ -d "/bio/bin/python-env" ]; then
     echo "Removing existing directory /bio/bin/python-env"
-    rm -r "/bio/bin/python-env/"
+    rm -rf "/bio/bin/python-env/"
 fi
 
 #################################
@@ -99,19 +99,19 @@ echo "for agreeing to licences and download. Download the two programs to a dire
 echo "If versions have change you need to change this script."
 
 read -p 'Do you wish to install signalp (Y/n)?' INSTALL_SIGNALP
-case $INSTALL_SIGNALP in
-n)
+case $INSTALL_SIGNALP in n)
 echo "Skipping install of signalp..."
 ;;
 *)
 read -p 'To which directory have you downloaded signalp? ' DOWLOAD_DIR
-echo "Installing signalp into the python environment (previously created by create-bio-bin-python-env.sh)." 
+echo "Installing signalp into the python environment..." 
 
 cp "$DOWLOAD_DIR/signalp-${SIGNALP_VERSION}.fast.tar.gz" .
 tar -zxvf signalp-${SIGNALP_VERSION}.fast.tar.gz
 
 pip install signalp6_fast/signalp-6-package
-
+;;
+esac
 #################################
 #
 # leave the virtual environment
