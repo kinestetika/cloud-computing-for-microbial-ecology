@@ -157,6 +157,7 @@ echo "Fetching, unpacking and compiling prodigal $VERSION"
 echo "In case the version has changed, check out https://github.com/hyattpd/Prodigal and edit this script."
 
 wget "https://github.com/hyattpd/Prodigal/releases/download/v${VERSION}/prodigal.linux"
+chmod "a+r" prodigal.linux 
 ln -s prodigal.linux prodigal
 
 
