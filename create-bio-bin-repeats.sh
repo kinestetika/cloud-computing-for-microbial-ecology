@@ -47,7 +47,7 @@ echo "##########################################################################
 
 wget http://genometools.org/pub/binary_distributions/${NAME}.tar.gz
 tar -xf ${NAME}.tar.gz
-ln -s ${NAME} gt
+ln -s ${NAME}/bin/gt gt
 rm ${NAME}.tar.gz
 
 #################################
@@ -78,7 +78,6 @@ rm ${NAME}.tar.gz
 # tandem repeat finder
 #
 #################################
-
 VERSION=v4.09.1
 NAME=trf409
 WWW=https://tandem.bu.edu/trf/trf.html
@@ -94,6 +93,51 @@ ln -s ${NAME}.linux64 trf
 
 #################################
 #
+# rmblast
+#
+#################################
+VERSION=2.11.0
+NAME=rmblast-${VERSION}
+WWW=http://www.repeatmasker.org/RepeatMasker/
+
+echo "################################################################################################"
+echo "Fetching and installing ${NAME}..."
+echo "In case this is no longer the latest version, check out ${WWW}, and edit this script accordingly"
+echo "################################################################################################"
+
+wget http://www.repeatmasker.org/${NAME}+-x64-linux.tar.gz
+tar -xf ${NAME}+-x64-linux.tar.gz
+ln -s rmblast-2.11.0 rmblast
+rm ${NAME}+-x64-linux.tar.gz
+
+
+#################################
+#
+# repeatmasker
+#
+#################################
+VERSION=4.1.2-p1
+NAME=RepeatMasker-${VERSION}
+WWW=http://www.repeatmasker.org/RepeatMasker/
+
+echo "################################################################################################"
+echo "Fetching and installing ${NAME}..."
+echo "In case this is no longer the latest version, check out ${WWW}, and edit this script accordingly"
+echo "During configuration, you will be asked for a search engine. Choose RMBlast. The path to the"
+echo "RMBlast directory is /bio/bin/repeats/rmblast/bin/."
+echo "################################################################################################"
+read -p 'Continue?' CONTINUE
+
+wget http://www.repeatmasker.org/RepeatMasker/${NAME}.tar.gz
+tar -xf ${NAME}.tar.gz
+cd RepeatMasker
+perl ./configure
+cd ..
+
+rm ${NAME}.tar.gz
+
+#################################
+#
 # minced
 #
 #################################
@@ -102,7 +146,7 @@ NAME=minced-${VERSION}
 WWW=https://github.com/ctSkennerton/minced
 
 echo "################################################################################################"
-echo "Fetching, unpacking and compiling $NAME"
+echo "Fetching, unpacking and compiling ${NAME}"
 echo "In case this is no longer the latest version, check out ${WWW}, and edit this script accordingly"
 echo "################################################################################################"
 

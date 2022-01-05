@@ -133,3 +133,24 @@ tar -xf ${NAME}-x64-linux.tar.gz
 ln -s ${NAME} blast
 rm ${NAME}-x64-linux.tar.gz
 
+#################################
+#
+# infernal
+#
+#################################
+VERSION=1.1.4
+NAME=infernal-${VERSION}
+WWW=http://eddylab.org/infernal/
+
+echo "################################################################################################"
+echo "Fetching, unpacking and compiling $NAME"
+echo "In case this is no longer the latest version, check out ${WWW}, and edit this script accordingly"
+echo "################################################################################################"
+
+wget http://eddylab.org/infernal/${NAME}-linux-intel-gcc.tar.gz
+tar -xf ${NAME}-linux-intel-gcc.tar.gz
+
+ln -s ${NAME}-linux-intel-gcc infernal
+rm ${NAME}-linux-intel-gcc.tar.gz
+
+

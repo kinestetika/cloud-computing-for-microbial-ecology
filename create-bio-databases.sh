@@ -13,7 +13,7 @@ then
     exit
 fi
 
-if [! -d /bio/databases]
+if [ ! -d /bio/databases ]
 then
     sudo mkdir /bio/databases
     sudo chmod -R a+wX /bio/databases
@@ -46,8 +46,6 @@ ln -s /bio/databases/metaamp /bio/bin/ribosomal/metaamp/bin/database
 
 cd ..
 
-exit
-
 #################################
 #
 # phyloflash
@@ -70,7 +68,6 @@ export PHYLOFLASH_DBHOME=/bio/databases/phyloflash/${VERSION}
 
 sed -i -e 's/export PHYLOFLASH_DBHOME=\/bio\/databases\/phyloflash\/.+/export PHYLOFLASH_DBHOME=/bio\/databases\/phyloflash\/${VERSION}/' /bio/bin/profile
 
-exit
 #################################
 #
 # gtdbtk

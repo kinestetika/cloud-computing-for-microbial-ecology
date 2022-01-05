@@ -39,7 +39,7 @@ NAME=cd-hit-v${VERSION}-2019-0228
 WWW=https://github.com/weizhongli/cdhit
 
 echo "################################################################################################"
-echo "Fetching, unpacking and compiling $NAME..."
+echo "Fetching, unpacking and compiling ${NAME}..."
 echo "In case this is no longer the latest version, check out ${WWW}, and edit this script accordingly."
 echo "################################################################################################"
 
@@ -64,7 +64,7 @@ NAME=bedtools
 WWW=https://github.com/arq5x/bedtools2
 
 echo "################################################################################################"
-echo "Fetching, unpacking and compiling $NAME..."
+echo "Fetching, unpacking and compiling ${NAME}..."
 echo "In case this is no longer the latest version, check out ${WWW}, and edit this script accordingly."
 echo "################################################################################################"
 
@@ -86,12 +86,34 @@ NAME=pullseq_v${VERSION}_linux64
 WWW=https://github.com/bcthomas/pullseq
 
 echo "################################################################################################"
-echo "Fetching, unpacking and compiling $NAME..."
+echo "Fetching, unpacking and compiling ${NAME}..."
 echo "In case this is no longer the latest version, check out ${WWW}, and edit this script accordingly."
 echo "################################################################################################"
 
 wget https://github.com/bcthomas/pullseq/releases/download/${VERSION}/${NAME}.zip
-unzip $NAME.zip
-rm $NAME.zip
+unzip ${NAME}.zip
+rm ${NAME}.zip
+
+#################################
+#
+# nseg
+#
+#################################
+VERSION=v1.0.1
+NAME=nseg-1.0.1
+WWW=https://github.com/jebrosen/nseg
+
+echo "################################################################################################"
+echo "Fetching, unpacking and compiling ${NAME}..."
+echo "In case this is no longer the latest version, check out ${WWW}, and edit this script accordingly."
+echo "################################################################################################"
 
 
+wget https://github.com/jebrosen/nseg/archive/refs/tags/${VERSION}.tar.gz
+tar -xf ${VERSION}.tar.gz
+cd ${NAME}
+make
+cd ..
+ln -s ${NAME}/nseg nseg
+ln -s ${NAME}/nmerge nmerge
+rm ${VERSION}.tar.gz
