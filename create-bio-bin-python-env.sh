@@ -65,6 +65,8 @@ pip3 install --upgrade iRep
 pip3 install --upgrade calisp
 pip3 install https://github.com/RasmussenLab/vamb/archive/3.0.3.zip
 pip3 install --upgrade scikit-learn imbalanced-learn pandas seaborn screed click mamba ruamel.yaml snakemake
+pip3 install --upgrade jupyter pandas pyarrow
+
 
 cd python-env
 
@@ -91,7 +93,31 @@ chmod a+x "MinPath.py"
 cd ..
 ln -s MinPath/MinPath.py bin
 
-SIGNALP_VERSION=6.0
+#################################
+#
+# install antismash
+#
+#################################
+VERSION=6.0.0
+NAME=antismash-${VERSION}
+WWW=https://docs.antismash.secondarymetabolites.org/install/
+
+echo "################################################################################################"
+echo "Fetching, unpacking and compiling ${NAME} in python environment..."
+echo "In case this is no longer the latest version, check out ${WWW}, and edit this script accordingly."
+echo "################################################################################################"
+
+wget https://dl.secondarymetabolites.org/releases/${VERSION}/${NAME}.tar.gz
+tar -xf ${VERSION}/${NAME}.tar.gz
+rm ${NAME}.tar.gz
+pip install ./${NAME}
+
+#################################
+#
+# install signalp
+#
+#################################
+SIGNALP_VERSION=6.0e
 
 echo "Installation of signalp $SIGNALP_VERSION..."
 echo "For signalp (and tmhmm), go to https://services.healthtech.dtu.dk/software.php"
@@ -107,7 +133,7 @@ read -p 'To which directory have you downloaded signalp? ' DOWLOAD_DIR
 echo "Installing signalp into the python environment..." 
 
 cp "$DOWLOAD_DIR/signalp-${SIGNALP_VERSION}.fast.tar.gz" .
-tar -zxvf signalp-${SIGNALP_VERSION}.fast.tar.gz
+tar -xf signalp-${SIGNALP_VERSION}.fast.tar.gz
 
 pip install signalp6_fast/signalp-6-package
 ;;

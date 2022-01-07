@@ -32,6 +32,7 @@ PATH=$PATH:$BIOINF_PREFIX/align/mafft-bin
 PATH=$PATH:$BIOINF_PREFIX/anaconda
 PATH=$PATH:$BIOINF_PREFIX/analysis
 PATH=$PATH:$BIOINF_PREFIX/analysis/bin
+PATH=$PATH:$BIOINF_PREFIX/annotate/
 PATH=$PATH:$BIOINF_PREFIX/annotate/prokka/bin
 PATH=$PATH:$BIOINF_PREFIX/annotate/tmhmm/bin
 PATH=$PATH:$BIOINF_PREFIX/assembly

@@ -94,7 +94,7 @@ cd "/bio/bin/annotate"
 
 #################################
 #
-# signalp and tmhmm
+# tmhmm
 #
 #################################
 TMHMM_VERSION=2.0c
@@ -160,5 +160,21 @@ wget "https://github.com/hyattpd/Prodigal/releases/download/v${VERSION}/prodigal
 chmod "a+x" prodigal.linux 
 ln -s prodigal.linux prodigal
 
+#################################
+#
+# install glimmerHMM
+#
+#################################
+VERSION=3.0.4
+NAME=GlimmerHMM-${VERSION}
+WWW=https://ccb.jhu.edu/software/glimmerhmm/man.shtml
 
+echo "################################################################################################"
+echo "Fetching, unpacking and compiling ${NAME}..."
+echo "In case this is no longer the latest version, check out ${WWW}, and edit this script accordingly."
+echo "################################################################################################"
 
+wget https://ccb.jhu.edu/software/glimmerhmm/dl/${NAME}.tar.gz
+tar -xf ${NAME}.tar.gz
+rm ${NAME}.tar.gz
+ln -s GlimmerHMM/bin/glimmerhmm_linux_x86_64 glimmerhmm
