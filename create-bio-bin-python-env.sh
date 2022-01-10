@@ -65,14 +65,14 @@ pip3 install --upgrade iRep
 pip3 install --upgrade calisp
 pip3 install https://github.com/RasmussenLab/vamb/archive/3.0.3.zip
 pip3 install --upgrade scikit-learn imbalanced-learn pandas seaborn screed click mamba ruamel.yaml snakemake
-pip3 install --upgrade jupyter pandas pyarrow
+pip3 install --upgrade jupyter pyarrow
 
 
 cd python-env
 
 git clone https://github.com/jiarong/VirSorter2.git
 cd VirSorter2
-pip install -e
+pip install -e .
 cd ..
 
 git clone https://github.com/fenderglass/Flye
@@ -98,7 +98,7 @@ ln -s MinPath/MinPath.py bin
 # install antismash
 #
 #################################
-VERSION=6.0.0
+VERSION=6.0.1
 NAME=antismash-${VERSION}
 WWW=https://docs.antismash.secondarymetabolites.org/install/
 

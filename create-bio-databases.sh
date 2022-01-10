@@ -114,3 +114,19 @@ cd ..
 source /bio/bin/python-env/bin/activate
 checkm data setRoot /bio/databases/checkm
 deactivate
+
+
+#################################
+#
+# virsorter
+#
+#################################
+cd /bio/databases
+wget https://osf.io/v46sc/download
+tar -xf download
+mv db virsorter
+source /bio/bin/python-env/bin/activate
+virsorter config --init-source --db-dir=./virsorter/
+deactivate
+
+
