@@ -7,23 +7,6 @@
 #
 #################################
 
-if ! command -v wget &> /dev/null 
-then
-    echo "program wget could not be found - make sure it is installed first"
-    exit
-fi
-
-if ! command -v cpanm &> /dev/null 
-then
-    echo "program cpanm (cpanminus could not be found - make sure it is installed first"
-    exit
-fi
-
-if ! command -v gcc &> /dev/null 
-then
-    echo "program gcc could not be found - make sure it is installed first"
-    exit
-fi
 
 #################################
 #

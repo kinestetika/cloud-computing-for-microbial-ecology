@@ -7,12 +7,6 @@
 #
 #################################
 
-if ! command -v wget &> /dev/null 
-then
-    echo "program wget could not be found - make sure it is installed first"
-    exit
-fi
-
 #################################
 #
 # mapping directory
@@ -82,7 +76,7 @@ rm ${NAME}.tar.bz2
 # samtools
 #
 #################################
-VERSION=1.13
+VERSION=1.14
 NAME=samtools-${VERSION}
 WWW=https://www.htslib.org/download/
 
@@ -145,7 +139,7 @@ rm ${NAME}.zip
 # BBMap
 #
 #################################
-VERSION=2.11.1
+VERSION=38.95
 NAME=bbmap.${VERSION}-ubuntu64
 WWW=https://sourceforge.net/projects/bbmap
 
@@ -163,7 +157,7 @@ rm download
 # SRAtoolkit
 #
 #################################
-VERSION=2.11.1
+VERSION=2.11.3
 NAME=sratoolkit.${VERSION}-ubuntu64
 WWW=https://www.bioinformatics.babraham.ac.uk/projects/fastqc/
 

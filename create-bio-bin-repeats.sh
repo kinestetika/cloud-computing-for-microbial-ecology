@@ -7,12 +7,6 @@
 #
 #################################
 
-if ! command -v wget &> /dev/null 
-then
-    echo "program wget could not be found - make sure it is installed first"
-    exit
-fi
-
 #################################
 #
 # repeats directory
@@ -35,7 +29,7 @@ cd "/bio/bin/${TARGET}"
 #
 #################################
 
-VERSION=1.5.10
+VERSION=1.6.2
 NAME=gt-${VERSION}-Linux_x86_64-64bit-barebone
 WWW=http://genometools.org/tools/gt_ltrharvest.html
 

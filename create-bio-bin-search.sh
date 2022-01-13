@@ -7,12 +7,6 @@
 #
 #################################
 
-if ! command -v wget &> /dev/null 
-then
-    echo "program wget could not be found - make sure it is installed first"
-    exit
-fi
-
 #################################
 #
 # search directory
@@ -34,7 +28,7 @@ cd "/bio/bin/${TARGET}"
 # vsearch
 #
 #################################
-VERSION=2.18.0
+VERSION=2.21.0
 NAME=vsearch-${VERSION}-linux-x86_64-static
 WWW=https://github.com/torognes/vsearch
 
@@ -99,7 +93,7 @@ rm ${NAME}.tar.gz
 # diamond
 #
 #################################
-VERSION=2.0.11
+VERSION=2.0.14
 NAME=diamond-${VERSION}+
 WWW=https://github.com/bbuchfink/diamond
 

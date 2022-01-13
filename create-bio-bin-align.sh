@@ -7,18 +7,6 @@
 #
 #################################
 
-if ! command -v wget &> /dev/null 
-then
-    echo "program wget could not be found - make sure it is installed first"
-    exit
-fi
-
-if ! command -v make &> /dev/null 
-then
-    echo "program make could not be found - make sure it is installed first"
-    exit
-fi
-
 if [ -d "/bio/bin/align" ]; then
     echo "Removing existing directory /bio/bin/align"
     rm -r "/bio/bin/align/"
@@ -80,7 +68,7 @@ rm "${NAME}.tar.gz"
 # mafft
 #
 #################################
-VERSION=7.487
+VERSION=7.490
 
 echo "Fetching, unpacking and compiling mafft $VERSION"
 echo "In case the version has changed, check out https://mafft.cbrc.jp/alignment/software/"

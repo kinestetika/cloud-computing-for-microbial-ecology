@@ -7,24 +7,6 @@
 #
 #################################
 
-if ! command -v wget &> /dev/null 
-then
-    echo "program wget could not be found - make sure it is installed first"
-    exit
-fi
-
-if ! command -v unzip &> /dev/null 
-then
-    echo "program unzip could not be found - make sure it is installed first"
-    exit
-fi
-
-if ! command -v make &> /dev/null 
-then
-    echo "program make could not be found - make sure it is installed first"
-    exit
-fi
-
 if [ -d "/bio/bin/analysis" ]; then
     echo "Removing existing directory /bio/bin/analysis"
     rm -rf "/bio/bin/analysis/"

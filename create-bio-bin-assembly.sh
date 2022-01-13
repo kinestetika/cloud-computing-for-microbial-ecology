@@ -7,12 +7,6 @@
 #
 #################################
 
-if ! command -v wget &> /dev/null 
-then
-    echo "program wget could not be found - make sure it is installed first"
-    exit
-fi
-
 TARGET=assembly
 if [ -d "/bio/bin/${TARGET}" ]; then
     echo "Removing existing directory /bio/bin/${TARGET}"

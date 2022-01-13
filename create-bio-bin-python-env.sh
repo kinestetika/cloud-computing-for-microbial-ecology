@@ -7,17 +7,6 @@
 #
 #################################
 
-if ! command -v wget &> /dev/null 
-then
-    echo "program wget could not be found - make sure it is installed first"
-    exit
-fi
-
-if ! command -v pip3 &> /dev/null 
-then
-    echo "python module/program pip could not be found - make sure it is installed first"
-    exit
-fi
 
 if [ $(pip list | grep virtualenv | wc -l) -lt 1 ]
 then
