@@ -64,6 +64,7 @@ echo "##########################################################################
 wget https://microbesonline.org/fasttree/FastTreeMP
 ln -s FastTreeMP fasttree
 ln -s FastTreeMP FastTree
+chmod a+x FastTreeMP
 
 #################################
 #

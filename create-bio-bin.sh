@@ -69,6 +69,7 @@ PATH=$PATH:$BIOINF_PREFIX/ribosomal/phyloflash
 PATH=$PATH:$BIOINF_PREFIX/search
 PATH=$PATH:$BIOINF_PREFIX/search/blast/bin
 PATH=$PATH:$BIOINF_PREFIX/search/hmmer/bin
+PATH=$PATH:$BIOINF_PREFIX/search/hmmer-2.3.2/src/
 PATH=$PATH:$BIOINF_PREFIX/search/vsearch/bin
 PATH=$PATH:$BIOINF_PREFIX/search/infernal/binaries
 PATH=$PATH:$BIOINF_PREFIX/trees

@@ -15,10 +15,10 @@ then
     exit
 fi
 
-if [ -d "/bio/bin/python-env" ]; then
-    echo "Removing existing directory /bio/bin/python-env"
-    rm -rf "/bio/bin/python-env/"
-fi
+#if [ -d "/bio/bin/python-env" ]; then
+#    echo "Removing existing directory /bio/bin/python-env"
+#    rm -rf "/bio/bin/python-env/"
+#fi
 
 #################################
 #
@@ -26,14 +26,18 @@ fi
 #
 #################################
 
-cd "/bio/bin"
+#cd "/bio/bin"
 
-if [ ! -d "/bio/bin/python-env" ]; then
-    echo "Creating python virtual environment as /bio/bin/python-env"
-    python -m virtualenv python-env
-fi
+#if [ ! -d "/bio/bin/python-env" ]; then
+#    echo "Creating python virtual environment as /bio/bin/python-env"
+#    python -m virtualenv python-env
+#fi
 
 source python-env/bin/activate
+
+# CURRENTLY SIGNALP AND ANTISMASH DEPEND ON PYTHON3.9.
+# CURRENTLY INSTRAIN DEPENDS ON BIOPYTHON<1.74
+# CURRENTLY VAMB DOES NOT INSTALL  
 
 #################################
 #
@@ -87,7 +91,7 @@ ln -s MinPath/MinPath.py bin
 # install antismash
 #
 #################################
-VERSION=6.0.1
+VERSION=6.1.0
 NAME=antismash-${VERSION}
 WWW=https://docs.antismash.secondarymetabolites.org/install/
 
@@ -97,7 +101,7 @@ echo "In case this is no longer the latest version, check out ${WWW}, and edit t
 echo "################################################################################################"
 
 wget https://dl.secondarymetabolites.org/releases/${VERSION}/${NAME}.tar.gz
-tar -xf ${VERSION}/${NAME}.tar.gz
+tar -xf ${NAME}.tar.gz
 rm ${NAME}.tar.gz
 pip install ./${NAME}
 

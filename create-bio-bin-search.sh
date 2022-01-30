@@ -28,7 +28,7 @@ cd "/bio/bin/${TARGET}"
 # vsearch
 #
 #################################
-VERSION=2.21.0
+VERSION=2.21.1
 NAME=vsearch-${VERSION}-linux-x86_64-static
 WWW=https://github.com/torognes/vsearch
 
@@ -86,6 +86,39 @@ cd ..
 cd ..
 
 ln -s ${NAME} hmmer
+rm ${NAME}.tar.gz
+
+#################################
+#
+# hmmer2
+#
+#################################
+VERSION=2.3.2
+NAME=hmmer-${VERSION}
+WWW=http://hmmer.org/download.html
+
+echo "################################################################################################"
+echo "Fetching, unpacking and compiling $NAME"
+echo "In case this is no longer the latest version, check out ${WWW}, and edit this script accordingly"
+echo "################################################################################################"
+
+wget http://eddylab.org/software/hmmer/${NAME}.tar.gz
+tar -xf ${NAME}.tar.gz
+cd ${NAME}
+./configure 
+make
+cd src
+mv hmmalign hmmalign2
+mv hmmbuild hmmbuild2
+mv hmmcalibrate hmmcalibrate2
+mv hmmconvert hmmconvert2
+mv hmmemit hmmemit2
+mv hmmfetch hmmfetch2
+mv hmmindex hmmindex2
+mv hmmpfam hmmpfam2
+mv hmmsearch hmmsearch2
+cd ..
+cd ..
 rm ${NAME}.tar.gz
 
 #################################

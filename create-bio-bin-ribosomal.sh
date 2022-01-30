@@ -87,7 +87,7 @@ ln -s uchime4.2.40_i86linux32 uchime
 # mothur
 #
 #################################
-VERSION=1.46.1
+VERSION=1.47.0
 NAME=Mothur.linux_8_noReadline
 WWW=https://github.com/mothur/mothur/
 

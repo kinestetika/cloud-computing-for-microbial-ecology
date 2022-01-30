@@ -123,4 +123,13 @@ source /bio/bin/python-env/bin/activate
 virsorter config --init-source --db-dir=./virsorter/
 deactivate
 
+#################################
+#
+# antismash
+#
+#################################
+
+source /bio/bin/python-env/bin/activate
+download-antismash-databases
+deactivate
 
