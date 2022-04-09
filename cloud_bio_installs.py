@@ -412,8 +412,8 @@ python-env/bin/pip install --upgrade gtdbtk
 python-env/bin/pip install --upgrade iRep
 python-env/bin/pip install --upgrade calisp
 python-env/bin/pip install https://github.com/RasmussenLab/vamb/archive/v3.0.3.zip
-#python-env/bin/pip install --upgrade scikit-learn imbalanced-learn pandas seaborn screed click mamba ruamel.yaml snakemake
-#python-env/bin/pip install --upgrade jupyter pyarrow
+python-env/bin/pip install --upgrade scikit-learn imbalanced-learn pandas seaborn screed click mamba ruamel.yaml snakemake
+python-env/bin/pip install --upgrade jupyter pyarrow build twine
 
 cd python-env
 git clone https://github.com/jiarong/VirSorter2.git
@@ -456,8 +456,7 @@ mkdir perl
 cpanm --notest --local-lib-contained $PROGRAMS_ROOT/perl Time::Piece XML::Simple Digest::MD5 Bio::Perl Archive::Extract Bio::DB::EUtilities DBD::SQLite DBI File::Copy::Recursive HTML::Entities LWP::Protocol::https LWP::Simple FindBin JSON Number::Format Statistics::Descriptive File::Slurp File::Slurper MCE::Mutex threads YAML Thread::Queue Math::Utils
 
 '''
-PROFILE='''PATH=$PATH:$BIOINF_PREFIX/align
-PATH=$PATH:$BIOINF_PREFIX
+PROFILE='''PATH=$PATH:$BIOINF_PREFIX
 PATH=$PATH:$BIOINF_PREFIX/cd-hit
 PATH=$PATH:$BIOINF_PREFIX/bedtools2/bin
 PATH=$PATH:$BIOINF_PREFIX/raxml
