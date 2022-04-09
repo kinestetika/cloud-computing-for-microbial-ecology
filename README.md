@@ -42,127 +42,62 @@ fi
 
 cd /bio/databases
 
-#################################
-#
 # metaamp
-#
-#################################
-VERSION=138_1
-NAME="mothur silva database for metaamp"
-WWW=https://mothur.org/wiki/silva_reference_files/
+1. mkdir metaamp
+2. cd metaamp
+3. wget https://mothur.s3.us-east-2.amazonaws.com/wiki/silva.nr_v138.1.tgz
+4. tar -xf silva.nr_v138.1.tgz
+5. rm silva.nr_v138.1.tgz
+6. ln -s silva.nr_v138_1.align silva.nr.fasta
+7. ln -s silva.nr_v138_1.tax silva.nr.tax
+8. ln -s /bio/databases/metaamp /bio/bin/ribosomal/metaamp/bin/database
+9. cd ..
 
-echo "Fetching and unpacking $NAME $VERSION"
-echo "In case this is no longer the latest version, check out ${WWW}, and edit this script accordingly."
+Metaamp needs code edits to run. Best to do manually:
+1. In file get_diversity.pl, comment out the line $projDir =~ s/\/bin//;
+2. In file global.pl,  comment out the line $projDir =~ s/\/bin//;
+3. getOTUTaxonTable.relabund.pl, change line 96 to if(exists $table{"$prefix\_$otuid"}->{$sample} && $totals{$sample}>0){
 
-mkdir metaamp
-cd metaamp
-
-wget https://mothur.s3.us-east-2.amazonaws.com/wiki/silva.nr_v${VERSION}.tgz
-tar -xf silva.nr_v${VERSION}.tgz
-rm silva.nr_v${VERSION}.tgz
-
-ln -s silva.nr_v138_1.align silva.nr.fasta
-ln -s silva.nr_v138_1.tax silva.nr.tax
-ln -s /bio/databases/metaamp /bio/bin/ribosomal/metaamp/bin/database
-
-Metaamp needs code edits to run. Best to do manually.
-In file get_diversity.pl, comment out the line $projDir =~ s/\/bin//;
-In file global.pl,  comment out the line $projDir =~ s/\/bin//;
-getOTUTaxonTable.relabund.pl, change line 96 to if(exists $table{"$prefix\_$otuid"}->{$sample} && $totals{$sample}>0){
-
-cd ..
-
-#################################
-#
 # phyloflash
-#
-#################################
-VERSION=138.1
+1. mkdir phyloflash
+2. cd phyloflash
+3. source /bio/bin/profile
+4. phyloFlash_makedb.pl --remote
+5. cd ..
 
-echo "Setting up database for phyloflash for Silva release ${VERSION}"
-
-mkdir phyloflash
-cd phyloflash
-
-source /bio/bin/profile
-
-phyloFlash_makedb.pl --remote
-
-cd ..
-
-export PHYLOFLASH_DBHOME=/bio/databases/phyloflash/${VERSION}
-
-sed -i -e 's/export PHYLOFLASH_DBHOME=\/bio\/databases\/phyloflash\/.+/export PHYLOFLASH_DBHOME=/bio\/databases\/phyloflash\/${VERSION}/' /bio/bin/profile
-
-#################################
-#
 # gtdbtk
-#
-#################################
-VERSION=release202
-NAME="gtdbtk_data"
-WWW=https://ecogenomics.github.io/GTDBTk/installing/index.html#gtdb-tk-reference-data
+1. mkdir gtdbtk
+2. cd gtdbtk
+3. wget https://data.gtdb.ecogenomic.org/releases/latest/auxillary_files/gtdbtk_data.tar.gz
+4. tar -xf gtdbtk_data.tar.gz
+5. rm gtdbtk_data.tar.gz
+6. cd ..
 
-echo "Fetching and unpacking $NAME $VERSION"
-echo "In case this is no longer the latest version, check out ${WWW}, and edit this script accordingly."
-
-mkdir gtdbtk
-cd gtdbtk
-
-wget "https://data.gtdb.ecogenomic.org/releases/latest/auxillary_files/${NAME}.tar.gz"
-tar -xf "${NAME}.tar.gz"
-rm "${NAME}.tar.gz"
-cd ..
-
-export GTDBTK_DATA_PATH=/bio/databases/gtdbtk/${VERSION}
-
-sed -i -e 's/export GTDBTK_DATA_PATH=\/bio\/databases\/gtdbtk\/.+/export GTDBTK_DATA_PATH=\/bio\/databases\/gtdbtk\/${VERSION}/' /bio/bin/profile
-
-#################################
-#
 # checkm
-#
-#################################
-VERSION=2015_01_16
-NAME="checkm_data_${VERSION}"
-WWW=https://github.com/Ecogenomics/CheckM/wiki/Installation#how-to-install-checkm
+1. mkdir checkm
+2. cd checkm
+3. wget "https://data.ace.uq.edu.au/public/CheckM_databases/checkm_data_2015_01_16.tar.gz"
+4. tar -xf checkm_data_2015_01_16.tar.gz
+5. rm checkm_data_2015_01_16.tar.gz
+6. cd ..
+7. source /bio/bin/python-env/bin/activate
+8. checkm data setRoot /bio/databases/checkm
+9. deactivate
 
-echo "Fetching and unpacking $NAME"
-echo "In case this is no longer the latest version, check out ${WWW}, and edit this script accordingly."
-
-mkdir checkm
-cd checkm
-wget "https://data.ace.uq.edu.au/public/CheckM_databases/${NAME}.tar.gz"
-tar -xf "${NAME}.tar.gz"
-rm "${NAME}.tar.gz"
-cd ..
-
-source /bio/bin/python-env/bin/activate
-checkm data setRoot /bio/databases/checkm
-deactivate
-
-
-#################################
-#
 # virsorter
-#
-#################################
-cd /bio/databases
-wget https://osf.io/v46sc/download
-tar -xf download
-mv db virsorter
-source /bio/bin/python-env/bin/activate
-virsorter config --init-source --db-dir=./virsorter/
-deactivate
+1. cd /bio/databases
+2. wget https://osf.io/v46sc/download
+3. tar -xf download
+4. mv db virsorter
+5. source /bio/bin/python-env/bin/activate
+6. virsorter config --init-source --db-dir=./virsorter/
+7. deactivate
 
-#################################
-#
 # antismash
-#
-#################################
-
-source /bio/bin/python-env/bin/activate
-download-antismash-databases
-deactivate
-
-Note that antismash databases get installed at: /bio/bin/python-env/lib/python3.10/site-packages/antismash/databases/
+1. source /bio/bin/python-env/bin/activate
+2. download-antismash-databases
+3. deactivate
+4. mkdir /bio/databases/antismash
+5. cp -rf /bio/bin/python-env/lib/python3.10/site-packages/antismash/databases/* /bio/databases/antismash
+6. rm -rf /bio/bin/python-env/lib/python3.10/site-packages/antismash/databases
+7. ln -sf /bio/databases/antismash /bio/bin/python-env/lib/python3.10/site-packages/antismash/databases
