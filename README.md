@@ -14,8 +14,7 @@ Cloud computing offers many advantages for processing metagenomics data:
 1. (done) Create a custom arch linux image on gcloud. Check out this [wiki](https://github.com/kinestetika/cloud-computing-for-microbial-ecology/wiki/Installing-the-Operating-System) page.
 2. (done) Install programs and databases. See wiki - Check out this [wiki](https://github.com/kinestetika/cloud-computing-for-microbial-ecology/wiki/Scope-and-List-of-Programs) page.
 3. (done) Share images with microbial ecology community. Check out this [wiki](https://github.com/kinestetika/cloud-computing-for-microbial-ecology/wiki/Firing-up-your-own-Cloud-Server) page.
-4. (in progress) Test and benchmark installed programs.
-5. (in progress) Explore other cloud providers, such as AWS and UpCloud.
+4. (done) Test installed programs.
 
 You can use the python script "cloud_bio_installs.py" to install a set of programs I find useful. Most installations will likely work
 out of the box. The script depends on the python module "wget".
