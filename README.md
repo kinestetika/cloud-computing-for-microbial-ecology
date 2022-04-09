@@ -65,10 +65,10 @@ ln -s silva.nr_v138_1.align silva.nr.fasta
 ln -s silva.nr_v138_1.tax silva.nr.tax
 ln -s /bio/databases/metaamp /bio/bin/ribosomal/metaamp/bin/database
 
-# Metaamp needs code edits to run. Best to do manually.
-# In file get_diversity.pl, comment out the line $projDir =~ s/\/bin//;
-# In file global.pl,  comment out the line $projDir =~ s/\/bin//;
-# getOTUTaxonTable.relabund.pl, change line 96 to if(exists $table{"$prefix\_$otuid"}->{$sample} && $totals{$sample}>0){
+Metaamp needs code edits to run. Best to do manually.
+In file get_diversity.pl, comment out the line $projDir =~ s/\/bin//;
+In file global.pl,  comment out the line $projDir =~ s/\/bin//;
+getOTUTaxonTable.relabund.pl, change line 96 to if(exists $table{"$prefix\_$otuid"}->{$sample} && $totals{$sample}>0){
 
 cd ..
 
@@ -165,4 +165,4 @@ source /bio/bin/python-env/bin/activate
 download-antismash-databases
 deactivate
 
-# Note that antismash databases get installed at: /bio/bin/python-env/lib/python3.10/site-packages/antismash/databases/
+Note that antismash databases get installed at: /bio/bin/python-env/lib/python3.10/site-packages/antismash/databases/
