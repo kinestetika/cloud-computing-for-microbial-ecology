@@ -413,7 +413,7 @@ python-env/bin/pip install --upgrade iRep
 python-env/bin/pip install --upgrade calisp
 python-env/bin/pip install https://github.com/RasmussenLab/vamb/archive/v3.0.3.zip
 python-env/bin/pip install --upgrade scikit-learn imbalanced-learn pandas seaborn screed click mamba ruamel.yaml snakemake
-python-env/bin/pip install --upgrade jupyter pyarrow build twine
+python-env/bin/pip install --upgrade jupyter pyarrow build twine ipympl
 
 cd python-env
 git clone https://github.com/jiarong/VirSorter2.git
