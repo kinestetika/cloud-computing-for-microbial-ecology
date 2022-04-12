@@ -100,12 +100,12 @@ Metaamp needs code edits to run. Best to do manually:
 5. cp -rf /bio/bin/antismash-env/lib/python3.10/site-packages/antismash/databases/* /bio/databases/antismash
 6. rm -rf /bio/bin/antismash-env/lib/python3.10/site-packages/antismash/databases
 7. ln -sf /bio/databases/antismash /bio/bin/antismash-env/lib/python3.10/site-packages/antismash/databases
-8. To enable running antismash with python-env activated, create a file "antismash" in /bio/bin with the following content:
+   1. To enable running antismash with python-env activated, create a file "antismash" in /bio/bin with the following content:
 
-'#!/bin/sh
-CURRENT_VIRTUAL_ENV=$VIRTUAL_ENV
-echo "leaving $CURRENT_VIRTUAL_ENV"
-source /bio/bin/antismash-env/bin/activate
-antismash "$@"
-deactivate
-source $CURRENT_VIRTUAL_ENV/bin/activate'
+   #!/bin/sh
+   CURRENT_VIRTUAL_ENV=$VIRTUAL_ENV
+   echo "leaving $CURRENT_VIRTUAL_ENV"
+   source /bio/bin/antismash-env/bin/activate
+   antismash "$@"
+   deactivate
+   source $CURRENT_VIRTUAL_ENV/bin/activate
