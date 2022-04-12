@@ -435,13 +435,20 @@ cp "MinPath.py" "MinPath.backup.py" && tail -n +2 "MinPath.py" > "MinPath.py.tmp
 chmod a+x "MinPath.py"
 cd ..
 ln -sf MinPath/MinPath.py bin
-wget https://dl.secondarymetabolites.org/releases/6.1.0/antismash-6.1.0.tar.gz
-tar -xf antismash-6.1.0.tar.gz
-rm antismash-6.1.0.tar.gz
-$PROGRAMS_ROOT/python-env/bin/pip install --upgrade ./antismash-6.1.0
+
 cp /bio/downloads/signalp-6.0e.fast.tar.gz .
 tar -xf signalp-6.0e.fast.tar.gz
 $PROGRAMS_ROOT/python-env/bin/pip install signalp6_fast/signalp-6-package
+cp -r $PROGRAMS_ROOT/python-env/signalp6_fast/signalp-6-package/models/* $PROGRAMS_ROOT/python-env/lib/python3.10/site-packages/signalp/model_weights/
+rm $PROGRAMS_ROOT/python-env/signalp-6.0e.fast.tar.gz
+
+cd $PROGRAMS_ROOT
+python -m virtualenv antismash-env
+cd antismash-env
+wget https://dl.secondarymetabolites.org/releases/6.1.0/antismash-6.1.0.tar.gz
+tar -xf antismash-6.1.0.tar.gz
+rm antismash-6.1.0.tar.gz
+$PROGRAMS_ROOT/antismash-env/bin/pip install --upgrade ./antismash-6.1.0
 
 # (instrain)
 ###################
