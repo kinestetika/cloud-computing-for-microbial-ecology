@@ -505,7 +505,7 @@ PATH=$PATH:$BIOINF_PREFIX/perl/bin
 export PATH
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$BIOINF_PREFIX/lib
 #export MAFFT_BINARIES=$BIOINF_PREFIX/align/mafft-7.475-with-extensions/binaries
-export GTDBTK_DATA_PATH=/bio/databases/gtdb/release202/
+export GTDBTK_DATA_PATH=/bio/databases/gtdbtk/release202/
 export PHYLOFLASH_DBHOME=/bio/databases/phyloflash138.1
 export PERL5LIB=$BIOINF_PREFIX/perl:$BIOINF_PREFIX/perl/lib/perl5:$PERL5LIB
 export R_LIBS=$BIOINF_PREFIX/r:$R_LIBS
