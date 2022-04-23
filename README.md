@@ -107,4 +107,10 @@ Metaamp needs code edits to run. Best to do manually:
    source /bio/bin/antismash-env/bin/activate  
    antismash "$@"  
    deactivate  
-   source $CURRENT_VIRTUAL_ENV/bin/activate  
+   source $CURRENT_VIRTUAL_ENV/bin/activate
+
+# repeatmasker
+To configure repeatmasker:
+1. source /bio/bin/profile if not already sourced
+2. cd /bio/bin/repeatMasker
+3. ./configure (accept all default options, set search engine to rmblast)
