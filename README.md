@@ -114,3 +114,4 @@ To configure repeatmasker:
 1. source /bio/bin/profile if not already sourced
 2. cd /bio/bin/repeatMasker
 3. ./configure (accept all default options, set search engine to rmblast)
+
