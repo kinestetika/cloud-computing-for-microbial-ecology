@@ -1,4 +1,3 @@
-import sys
 import time
 import subprocess
 import argparse
@@ -332,10 +331,10 @@ mv sratoolkit.3.0.0-ubuntu64 sratoolkit
 rm sratoolkit.3.0.0-ubuntu64.tar.gz
 
 #(fastqc) fastqc 0.11.9 https://www.bioinformatics.babraham.ac.uk/projects/fastqc/
-wget https://www.bioinformatics.babraham.ac.uk/projects/fastqc/fastqc_v0.11.9.zip
-unzip fastqc_v0.11.9.zip
-chmod a+x FastQC/fastqc
-rm fastqc_v0.11.9.zip
+#wget https://www.bioinformatics.babraham.ac.uk/projects/fastqc/fastqc_v0.11.9.zip
+#unzip fastqc_v0.11.9.zip
+#chmod a+x FastQC/fastqc
+#rm fastqc_v0.11.9.zip
 
 #(minced) minced 0.4.2 https://github.com/ctSkennerton/minced
 wget https://github.com/ctSkennerton/minced/archive/refs/tags/0.4.2.tar.gz
