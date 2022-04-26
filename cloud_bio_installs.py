@@ -132,7 +132,7 @@ mv hmmer-2.3.2 hmmer2
 rm hmmer-2.3.2.tar.gz
 
 #(diamond) diamond 2.0.14 https://github.com/bbuchfink/diamond
-wget https://github.com/bbuchfink/diamond/releases/download/v2.0.14/diamond-linux64.tar.gz
+wget https://github.com/bbuchfink/diamond/releases/download/v2.0.15/diamond-linux64.tar.gz
 tar -xf diamond-linux64.tar.gz
 rm diamond-linux64.tar.gz
 
@@ -367,7 +367,7 @@ wget https://github.com/Benson-Genomics-Lab/TRF/releases/download/v4.09.1/trf409
 chmod a+x trf409.linux64
 ln -sf trf409.linux64 trf
 
-#(rmblast) rmblastn 2.11.0 http://www.repeatmasker.org/${NAME}+-x64-linux.tar.gz
+#(rmblast) rmblastn 2.11.0 http://www.repeatmasker.org/rmblast+-x64-linux.tar.gz
 wget http://www.repeatmasker.org/rmblast-2.11.0+-x64-linux.tar.gz
 tar -xf rmblast-2.11.0+-x64-linux.tar.gz
 mv rmblast-2.11.0 rmblast
