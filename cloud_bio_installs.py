@@ -40,11 +40,14 @@ ln -sf nseg-1.0.1/nseg nseg
 ln -sf nseg-1.0.1/nmerge nmerge
 rm v1.0.1.tar.gz
 
-#(gblocks) Gblocks 0.91b http://molevol.cmima.csic.es/castresana/Gblocks.html
-wget http://molevol.cmima.csic.es/castresana/Gblocks/Gblocks_Linux64_0.91b.tar.Z
-tar -xf Gblocks_Linux64_0.91b.tar.Z
-ln -sf Gblocks_0.91b/Gblocks Gblocks
-rm Gblocks_Linux64_0.91b.tar.Z
+#(java -jar $PROGRAMS_ROOT/BMGE/src/BMGE.jar) bmge 2.0 https://research.pasteur.fr/en/software/bmge-block-mapping-and-gathering-with-entropy/
+git clone https://gitlab.pasteur.fr/GIPhy/BMGE.git
+cd BMGE/src
+javac BMGE.java
+echo Main-Class: BMGE > MANIFEST.MF
+jar -cmvf MANIFEST.MF BMGE.jar BMGE.class bmge/*.class
+rm MANIFEST.MF BMGE.class bmge/*.class
+cd $PROGRAMS_ROOT
 
 #(clustalo) clustalo 1.2.4 http://www.clustal.org/omega/
 cd $PROGRAMS_ROOT
