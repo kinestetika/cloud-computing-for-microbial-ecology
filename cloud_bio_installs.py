@@ -86,11 +86,11 @@ unzip pplacer-Linux-v1.1.alpha19.zip
 mv pplacer-Linux-v1.1.alpha19 pplacer
 rm pplacer-Linux-v1.1.alpha19.zip
 
-#(vsearch) vsearch 2.21.1 https://github.com/torognes/vsearch
-wget https://github.com/torognes/vsearch/releases/download/v2.21.1/vsearch-2.21.1-linux-x86_64-static.tar.gz
-tar -xf vsearch-2.21.1-linux-x86_64-static.tar.gz
-ln -sf vsearch-2.21.1-linux-x86_64-static vsearch
-rm vsearch-2.21.1-linux-x86_64-static.tar.gz
+#(vsearch) vsearch 2.21.2 https://github.com/torognes/vsearch
+wget https://github.com/torognes/vsearch/releases/download/v2.21.2/vsearch-2.21.2-linux-x86_64-static.tar.gz
+tar -xf vsearch-2.21.2-linux-x86_64-static.tar.gz
+ln -sf vsearch-2.21.2-linux-x86_64-static vsearch
+rm vsearch-2.21.2-linux-x86_64-static.tar.gz
 
 #(usearch) usearch 11.0.667 https://drive5.com/usearch/download.html
 wget https://drive5.com/downloads/usearch11.0.667_i86linux32.gz
@@ -131,8 +131,8 @@ cd $PROGRAMS_ROOT
 mv hmmer-2.3.2 hmmer2
 rm hmmer-2.3.2.tar.gz
 
-#(diamond) diamond 2.0.14 https://github.com/bbuchfink/diamond
-wget https://github.com/bbuchfink/diamond/releases/download/v2.0.14/diamond-linux64.tar.gz
+#(diamond) diamond 2.0.15 https://github.com/bbuchfink/diamond
+wget https://github.com/bbuchfink/diamond/releases/download/v2.0.15/diamond-linux64.tar.gz
 tar -xf diamond-linux64.tar.gz
 rm diamond-linux64.tar.gz
 
@@ -159,8 +159,8 @@ wget https://drive5.com/uchime/uchime4.2.40_i86linux32
 chmod a+x uchime4.2.40_i86linux32 
 ln -sf uchime4.2.40_i86linux32 uchime
 
-#(mothur) mothur 1.47.0 https://github.com/mothur/mothur/
-wget https://github.com/mothur/mothur/releases/download/v.1.47.0/Mothur.linux_8_noReadline.zip
+#(mothur) mothur 1.48.0 https://github.com/mothur/mothur/
+wget https://github.com/mothur/mothur/releases/download/v.1.48.0/Mothur.linux_8_noReadline.zip
 unzip Mothur.linux_8_noReadline.zip
 rm Mothur.linux_8_noReadline.zip
 rm -r __MACOSX
@@ -249,11 +249,11 @@ cd $PROGRAMS_ROOT
 rm idba-1.1.3.tar.gz
 ln -sf idba-1.1.3/bin idba
 
-#(SPAdes) spades.py 3.15.4 https://github.com/ablab/spades 
-wget http://cab.spbu.ru/files/release3.15.4/SPAdes-3.15.4-Linux.tar.gz
-tar -xzf SPAdes-3.15.4-Linux.tar.gz
-ln -sf SPAdes-3.15.4-Linux spades
-rm SPAdes-3.15.4-Linux.tar.gz
+#(SPAdes) spades.py 3.15.5 https://github.com/ablab/spades
+wget http://cab.spbu.ru/files/release3.15.5/SPAdes-3.15.5-Linux.tar.gz
+tar -xzf SPAdes-3.15.5-Linux.tar.gz
+ln -sf SPAdes-3.15.5-Linux spades
+rm SPAdes-3.15.5-Linux.tar.gz
 
 #(megahit) megahit 1.2.9 https://github.com/voutcn/megahit
 wget https://github.com/voutcn/megahit/releases/download/v1.2.9/MEGAHIT-1.2.9-Linux-x86_64-static.tar.gz
@@ -281,38 +281,38 @@ wget https://bitbucket.org/berkeleylab/metabat/downloads/metabat-static-binary-l
 tar -zxf metabat-static-binary-linux-x64_v2.12.1.tar.gz
 rm metabat-static-binary-linux-x64_v2.12.1.tar.gz
 
-#(guppy-cpu) guppy_basecaller 5.0.14 Oxford-Nanopore-community-website
-cp /bio/downloads/ont-guppy-cpu_5.0.14_linux64.tar.gz .
-tar -xf ont-guppy-cpu_5.0.14_linux64.tar.gz
-rm ont-guppy-cpu_5.0.14_linux64.tar.gz
+#(guppy-cpu) guppy_basecaller 6.3.7 https://community.nanoporetech.com
+cp /bio/downloads/ont-guppy-cpu_6.3.7_linux64.tar.gz .
+tar -xf ont-guppy-cpu_6.3.7_linux64.tar.gz
+rm ont-guppy-cpu_6.3.7_linux64.tar.gz
 
-#(bcftools) bcftools 1.14 https://www.htslib.org/download/
-wget https://github.com/samtools/bcftools/releases/download/1.14/bcftools-1.14.tar.bz2
-tar -xf bcftools-1.14.tar.bz2
-cd bcftools-1.14
-./configure --prefix=$PROGRAMS_ROOT/bcftools-1.14
+#(bcftools) bcftools 1.16 https://www.htslib.org/download/
+wget https://github.com/samtools/bcftools/releases/download/1.16/bcftools-1.16.tar.bz2
+tar -xf bcftools-1.16.tar.bz2
+cd bcftools-1.16
+./configure --prefix=$PROGRAMS_ROOT/bcftools-1.16
 make
 make install
 cd $PROGRAMS_ROOT
-mv bcftools-1.14 bcftools
-rm bcftools-1.14.tar.bz2
+mv bcftools-1.16 bcftools
+rm bcftools-1.16.tar.bz2
 
-#(samtools) samtools 1.14 https://www.htslib.org/download/
-wget https://github.com/samtools/samtools/releases/download/1.14/samtools-1.14.tar.bz2
-tar -xf samtools-1.14.tar.bz2
-cd samtools-1.14
-./configure --prefix=$PROGRAMS_ROOT/samtools-1.14
+#(samtools) samtools 1.16.1 https://www.htslib.org/download/
+wget https://github.com/samtools/samtools/releases/download/1.16.1/samtools-1.16.1.tar.bz2
+tar -xf samtools-1.16.1.tar.bz2
+cd samtools-1.16.1
+./configure --prefix=$PROGRAMS_ROOT/samtools-1.16.1
 make
 make install
 cd $PROGRAMS_ROOT
-mv samtools-1.14 samtools
-rm samtools-1.14.tar.bz2
+mv samtools-1.16.1 samtools
+rm samtools-1.16.1.tar.bz2
 
-#(bowtie2) bowtie2 2.4.4 https://github.com/BenLangmead/bowtie2
-wget https://github.com/BenLangmead/bowtie2/releases/download/v2.4.4/bowtie2-2.4.4-linux-x86_64.zip
-unzip bowtie2-2.4.4-linux-x86_64.zip
-mv bowtie2-2.4.4-linux-x86_64 bowtie2
-rm bowtie2-2.4.4-linux-x86_64.zip
+#(bowtie2) bowtie2 2.4.5 https://github.com/BenLangmead/bowtie2
+wget https://github.com/BenLangmead/bowtie2/releases/download/v2.4.5/bowtie2-2.4.5-linux-x86_64.zip
+unzip bowtie2-2.4.5-linux-x86_64.zip
+mv bowtie2-2.4.5-linux-x86_64 bowtie2
+rm bowtie2-2.4.5-linux-x86_64.zip
 
 #(bowtie) bowtie 1.3.1 https://github.com/BenLangmead/bowtie
 wget https://github.com/BenLangmead/bowtie/releases/download/v1.3.1/bowtie-1.3.1-linux-x86_64.zip
@@ -320,7 +320,7 @@ unzip bowtie-1.3.1-linux-x86_64.zip
 mv bowtie-1.3.1-linux-x86_64 bowtie
 rm bowtie-1.3.1-linux-x86_64.zip
 
-#(bbmap) bbmap.sh 38.95 https://sourceforge.net/projects/bbmap
+#(bbmap) bbmap.sh 38.98 https://sourceforge.net/projects/bbmap
 wget https://sourceforge.net/projects/bbmap/files/latest/download
 tar -xf download
 rm download
@@ -353,48 +353,47 @@ mv gt-1.6.2-Linux_x86_64-64bit-barebone genometools
 ln -sf genometools/bin
 rm gt-1.6.2-Linux_x86_64-64bit-barebone.tar.gz
 
-#(repeatscout) RepeatScout 1.0.5 http://bix.ucsd.edu/repeatscout/    
-wget http://bix.ucsd.edu/repeatscout/RepeatScout-1.0.5.tar.gz
-tar -xf RepeatScout-1.0.5.tar.gz
-cd RepeatScout-1
+#(RepeatScout) RepeatScout 1.0.5 https://github.com/mmcco/RepeatScout
+git clone https://github.com/mmcco/RepeatScout.git
+cd RepeatScout
 make
 cd $PROGRAMS_ROOT
-mv RepeatScout-1 repeatscout
-rm RepeatScout-1.0.5.tar.gz
+mv RepeatScout repeatscout
 
 #(tandem-repeat-finder) trf 4.09 https://tandem.bu.edu/trf/trf.html
 wget https://github.com/Benson-Genomics-Lab/TRF/releases/download/v4.09.1/trf409.linux64
 chmod a+x trf409.linux64
 ln -sf trf409.linux64 trf
 
-#(rmblast) rmblastn 2.11.0 http://www.repeatmasker.org/${NAME}+-x64-linux.tar.gz
+#(rmblast) rmblastn 2.11.0 http://www.repeatmasker.org/RMBlast.html
 wget http://www.repeatmasker.org/rmblast-2.11.0+-x64-linux.tar.gz
 tar -xf rmblast-2.11.0+-x64-linux.tar.gz
 mv rmblast-2.11.0 rmblast
 rm rmblast-2.11.0+-x64-linux.tar.gz
 
-#(repeatmasker) RepeatMasker 4.1.2-p1 http://www.repeatmasker.org/RepeatMasker/ 
-wget http://www.repeatmasker.org/RepeatMasker/RepeatMasker-4.1.2-p1.tar.gz
-tar -xf RepeatMasker-4.1.2-p1.tar.gz
+#(RepeatMasker) RepeatMasker 4.1.3 http://www.repeatmasker.org/RepeatMasker/ 
+wget http://www.repeatmasker.org/RepeatMasker/RepeatMasker-4.1.3.tar.gz
+tar -xf RepeatMasker-4.1.3.tar.gz
 cd RepeatMasker
 #perl ./configure (INPUT NEEDED: /bio/bin/trf 2 /bio/bin/rmblast/bin Y 5
 cd $PROGRAMS_ROOT
-rm RepeatMasker-4.1.2-p1.tar.gz
+rm RepeatMasker-4.1.3.tar.gz
+mv RepeatMasker repeatmasker
 
 #(dada2) R:dada2 1.18 https://benjjneb.github.io/dada2/index.html
 mkdir r
 Rscript -e "install.packages(c('genoPlotR', 'data.table', 'doMC', 'ggplot2', 'optparse', 'seqinr', 'tibble', 'BiocManager'), '$PROGRAMS_ROOT/r', repos='https://cran.rstudio.com')"
 Rscript -e "BiocManager::install('dada2', lib = '$PROGRAMS_ROOT/r')"
 
-#(DAStool) R:DASTool 1.1.3 https://github.com/cmks/DAS_Tool
-wget https://github.com/cmks/DAS_Tool/archive/refs/tags/1.1.3.tar.gz
-tar -zxf 1.1.3.tar.gz
-R CMD INSTALL DAS_Tool-1.1.3/package/DASTool_1.1.3.tar.gz
-mv DAS_Tool-1.1.3 DAS_Tool
+#(DAStool) R:DASTool 1.1.4 https://github.com/cmks/DAS_Tool
+wget https://github.com/cmks/DAS_Tool/archive/refs/tags/1.1.4.tar.gz
+tar -zxf 1.1.4.tar.gz
+R CMD INSTALL DAS_Tool-1.1.3/package/DASTool_1.1.4.tar.gz
+mv DAS_Tool-1.1.4 DAS_Tool
 cd DAS_Tool
 unzip db.zip
 cd $PROGRAMS_ROOT
-rm 1.1.3.tar.gz
+rm 1.1.4.tar.gz
 
 #(python) XXX XX XX
 # python programs and modules
@@ -436,19 +435,19 @@ chmod a+x "MinPath.py"
 cd ..
 ln -sf MinPath/MinPath.py bin
 
-cp /bio/downloads/signalp-6.0e.fast.tar.gz .
-tar -xf signalp-6.0e.fast.tar.gz
+cp /bio/downloads/signalp-6.0g.fast.tar.gz .
+tar -xf signalp-6.0g.fast.tar.gz
 $PROGRAMS_ROOT/python-env/bin/pip install signalp6_fast/signalp-6-package
 cp -r $PROGRAMS_ROOT/python-env/signalp6_fast/signalp-6-package/models/* $PROGRAMS_ROOT/python-env/lib/python3.10/site-packages/signalp/model_weights/
-rm $PROGRAMS_ROOT/python-env/signalp-6.0e.fast.tar.gz
+rm $PROGRAMS_ROOT/python-env/signalp-6.0g.fast.tar.gz
 
 cd $PROGRAMS_ROOT
 python -m virtualenv antismash-env
 cd antismash-env
-wget https://dl.secondarymetabolites.org/releases/6.1.0/antismash-6.1.0.tar.gz
-tar -xf antismash-6.1.0.tar.gz
-rm antismash-6.1.0.tar.gz
-$PROGRAMS_ROOT/antismash-env/bin/pip install --upgrade ./antismash-6.1.0
+wget https://dl.secondarymetabolites.org/releases/6.1.1/antismash-6.1.1.tar.gz
+tar -xf antismash-6.1.1.tar.gz
+rm antismash-6.1.1.tar.gz
+$PROGRAMS_ROOT/antismash-env/bin/pip install --upgrade ./antismash-6.1.1
 
 # (instrain)
 ###################
@@ -494,11 +493,11 @@ PATH=$PATH:$BIOINF_PREFIX/bcftools/bin
 #PATH=$PATH:$BIOINF_PREFIX/ont-guppy/bin
 PATH=$PATH:$BIOINF_PREFIX/ont-guppy-cpu/bin
 PATH=$PATH:$BIOINF_PREFIX/repeatscout
-PATH=$PATH:$BIOINF_PREFIX/minced
+PATH=$PATH:$BIOINF_PREFIX/repeatmasker
 PATH=$PATH:$BIOINF_PREFIX/rmblast/bin
 PATH=$PATH:$BIOINF_PREFIX/genometools/bin
-PATH=$PATH:$BIOINF_PREFIX/RepeatMasker
 PATH=$PATH:$BIOINF_PREFIX/DAS_Tool
+PATH=$PATH:$BIOINF_PREFIX/minced
 
 
 PATH=$PATH:$BIOINF_PREFIX/perl/bin
