@@ -115,3 +115,9 @@ To configure repeatmasker:
 2. cd /bio/bin/repeatMasker
 3. ./configure (accept all default options, set search engine to rmblast)
 
+# BMGE
+To complete installation:
+1. cd /bio/bin/BMGE/src
+2. echo Main-Class: BMGE > MANIFEST.MF
+3. jar -cmvf MANIFEST.MF BMGE.jar BMGE.class bmge/*.class
+4. rm MANIFEST.MF BMGE.class bmge/*.class

@@ -44,9 +44,9 @@ rm v1.0.1.tar.gz
 git clone https://gitlab.pasteur.fr/GIPhy/BMGE.git
 cd BMGE/src
 javac BMGE.java
-echo Main-Class: BMGE > MANIFEST.MF
-jar -cmvf MANIFEST.MF BMGE.jar BMGE.class bmge/*.class
-rm MANIFEST.MF BMGE.class bmge/*.class
+#echo Main-Class: BMGE > MANIFEST.MF
+#jar -cmvf MANIFEST.MF BMGE.jar BMGE.class bmge/*.class
+#rm MANIFEST.MF BMGE.class bmge/*.class
 cd $PROGRAMS_ROOT
 
 #(clustalo) clustalo 1.2.4 http://www.clustal.org/omega/
