@@ -163,7 +163,7 @@ chmod a+x uchime4.2.40_i86linux32
 ln -sf uchime4.2.40_i86linux32 uchime
 
 #(mothur) mothur 1.48.0 https://github.com/mothur/mothur/
-wget https://github.com/mothur/mothur/releases/download/v.1.48.0/Mothur.linux_8_noReadline.zip
+wget https://github.com/mothur/mothur/releases/download/v1.48.0/Mothur.linux_8_noReadline.zip
 unzip Mothur.linux_8_noReadline.zip
 rm Mothur.linux_8_noReadline.zip
 rm -r __MACOSX
