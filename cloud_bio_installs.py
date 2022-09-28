@@ -385,15 +385,15 @@ mv RepeatMasker repeatmasker
 
 #(dada2) R:dada2 1.18 https://benjjneb.github.io/dada2/index.html
 mkdir r
-Rscript -e "install.packages(c('genoPlotR', 'data.table', 'doMC', 'ggplot2', 'optparse', 'seqinr', 'tibble', 'BiocManager'), '$PROGRAMS_ROOT/r', repos='https://cran.rstudio.com')"
+Rscript -e "install.packages(c('genoPlotR', 'data.table', 'doMC', 'ggplot2', 'optparse', 'seqinr', 'tibble', 'BiocManager', 'magrittr', 'docopt'), '$PROGRAMS_ROOT/r', repos='https://cran.rstudio.com')"
 Rscript -e "BiocManager::install('dada2', lib = '$PROGRAMS_ROOT/r')"
 
 #(DAStool) R:DASTool 1.1.4 https://github.com/cmks/DAS_Tool
 wget https://github.com/cmks/DAS_Tool/archive/refs/tags/1.1.4.tar.gz
 tar -zxf 1.1.4.tar.gz
-R CMD INSTALL DAS_Tool-1.1.3/package/DASTool_1.1.4.tar.gz
+#R CMD INSTALL DAS_Tool-1.1.4/package/DASTool_1.1.4.tar.gz
 mv DAS_Tool-1.1.4 DAS_Tool
-cd DAS_Tool
+cd DAS_ToolDAs  
 unzip db.zip
 cd $PROGRAMS_ROOT
 rm 1.1.4.tar.gz
@@ -659,7 +659,8 @@ def main():
     log('Before you continue:')
     log('[1] you will need to install some packages using your linux distro\'s package manager (e.g. apt). On arch:')
     log('pacman -S gnuplot cpanminus fig2dev boost zip unzip python-pip python-virtualenv python-h5py tk curl '
-        'r gawk jre-openjdk ruby cuda cairo pango gsl jdk-openjdk graphviz xerces-c pigz git glpk ncurses')
+        'r gawk jre-openjdk ruby cuda cairo pango gsl jdk-openjdk graphviz xerces-c pigz git glpk ncurses '
+        'gcc-fortran')
     log('[2] Some program require manual downloads: signalp, tmhmm and guppy. First create the folder "/bio/bin/downloads"'
         '. Then, download these programs and place them in that folder. Also, if you need a non standard python version,'
         'compile it and place the python executable in that folder. Otherwise, create a symlink to the standard python'
