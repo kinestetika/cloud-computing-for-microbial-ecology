@@ -393,7 +393,7 @@ wget https://github.com/cmks/DAS_Tool/archive/refs/tags/1.1.4.tar.gz
 tar -zxf 1.1.4.tar.gz
 #R CMD INSTALL DAS_Tool-1.1.4/package/DASTool_1.1.4.tar.gz
 mv DAS_Tool-1.1.4 DAS_Tool
-cd DAS_ToolDAs  
+cd DAS_Tool  
 unzip db.zip
 cd $PROGRAMS_ROOT
 rm 1.1.4.tar.gz
