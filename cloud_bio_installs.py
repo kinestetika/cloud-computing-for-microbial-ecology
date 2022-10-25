@@ -388,7 +388,7 @@ mkdir r
 Rscript -e "install.packages(c('genoPlotR', 'data.table', 'doMC', 'ggplot2', 'optparse', 'seqinr', 'tibble', 'BiocManager', 'magrittr', 'docopt'), '$PROGRAMS_ROOT/r', repos='https://cran.rstudio.com')"
 Rscript -e "BiocManager::install('dada2', lib = '$PROGRAMS_ROOT/r')"
 
-#(DAStool) R:DASTool 1.1.4 https://github.com/cmks/DAS_Tool
+#(DAStool) DASTool 1.1.4 https://github.com/cmks/DAS_Tool
 wget https://github.com/cmks/DAS_Tool/archive/refs/tags/1.1.4.tar.gz
 tar -zxf 1.1.4.tar.gz
 #R CMD INSTALL DAS_Tool-1.1.4/package/DASTool_1.1.4.tar.gz
@@ -508,7 +508,7 @@ export PATH
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$BIOINF_PREFIX/lib
 #export MAFFT_BINARIES=$BIOINF_PREFIX/align/mafft-7.475-with-extensions/binaries
 export GTDBTK_DATA_PATH=/bio/databases/gtdbtk/release207/
-export PHYLOFLASH_DBHOME=/bio/databases/phyloflash138.1
+export PHYLOFLASH_DBHOME=/bio/databases/phyloflash/138.1
 export PERL5LIB=$BIOINF_PREFIX/perl:$BIOINF_PREFIX/perl/lib/perl5:$PERL5LIB
 export R_LIBS=$BIOINF_PREFIX/r:$R_LIBS
 '''
