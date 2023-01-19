@@ -13,7 +13,7 @@ COMMANDS = '''
 wget https://github.com/weizhongli/cdhit/releases/download/V4.8.1/cd-hit-v4.8.1-2019-0228.tar.gz
 tar -xf cd-hit-v4.8.1-2019-0228.tar.gz
 cd cd-hit-v4.8.1-2019-0228
-make
+makeq
 cd $PROGRAMS_ROOT
 mv cd-hit-v4.8.1-2019-0228 cd-hit
 rm cd-hit-v4.8.1-2019-0228.tar.gz
@@ -311,11 +311,11 @@ cd $PROGRAMS_ROOT
 mv samtools-1.16.1 samtools
 rm samtools-1.16.1.tar.bz2
 
-#(bowtie2) bowtie2 2.4.5 https://github.com/BenLangmead/bowtie2
-wget https://github.com/BenLangmead/bowtie2/releases/download/v2.4.5/bowtie2-2.4.5-linux-x86_64.zip
-unzip bowtie2-2.4.5-linux-x86_64.zip
-mv bowtie2-2.4.5-linux-x86_64 bowtie2
-rm bowtie2-2.4.5-linux-x86_64.zip
+#(bowtie2) bowtie2 2.5.1 https://github.com/BenLangmead/bowtie2
+wget https://github.com/BenLangmead/bowtie2/releases/download/v2.5.1/bowtie2-2.5.1-linux-x86_64.zip
+unzip bowtie2-2.5.1-linux-x86_64.zip
+mv bowtie2-2.5.1-linux-x86_64 bowtie2
+rm bowtie2-2.5.1-linux-x86_64.zip
 
 #(bowtie) bowtie 1.3.1 https://github.com/BenLangmead/bowtie
 wget https://github.com/BenLangmead/bowtie/releases/download/v1.3.1/bowtie-1.3.1-linux-x86_64.zip
@@ -353,7 +353,7 @@ rm 0.4.2.tar.gz
 wget http://genometools.org/pub/binary_distributions/gt-1.6.2-Linux_x86_64-64bit-barebone.tar.gz
 tar -xf gt-1.6.2-Linux_x86_64-64bit-barebone.tar.gz
 mv gt-1.6.2-Linux_x86_64-64bit-barebone genometools
-ln -sf genometools/bin
+ln -sf genometools/bin/gt .
 rm gt-1.6.2-Linux_x86_64-64bit-barebone.tar.gz
 
 #(RepeatScout) RepeatScout 1.0.5 https://github.com/mmcco/RepeatScout
@@ -373,6 +373,22 @@ wget http://www.repeatmasker.org/rmblast-2.11.0+-x64-linux.tar.gz
 tar -xf rmblast-2.11.0+-x64-linux.tar.gz
 mv rmblast-2.11.0 rmblast
 rm rmblast-2.11.0+-x64-linux.tar.gz
+
+#(mcl) mcl 22-282 https://micans.org/mcl/
+wget http://micans.org/mcl/src/mcl-22-282.tar.gz
+wget http://micans.org/mcl/src/cimfomfa-22-273.tar.gz
+tar xzf cimfomfa-22-273.tar.gz
+cd cimfomfa-22-273
+./configure --prefix=/bio/bin --disable-shared
+make
+make install
+tar xzf mcl-22-282.tar.gz
+cd mcl-22-282
+./configure CFLAGS=-I$PROGRAMS_ROOT/include LDFLAGS=-L$PROGRAMS_ROOT/lib --prefix=$PROGRAMS_ROOT --enable-rcl
+make
+make install
+cd $PROGRAMS_ROOT
+mv bin mcl
 
 #(RepeatMasker) RepeatMasker 4.1.3 http://www.repeatmasker.org/RepeatMasker/ 
 wget http://www.repeatmasker.org/RepeatMasker/RepeatMasker-4.1.3.tar.gz
