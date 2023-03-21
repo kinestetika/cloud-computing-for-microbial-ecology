@@ -83,6 +83,65 @@ chmod a+x FastTreeMP
 ln -sf FastTreeMP fasttree
 ln -sf FastTreeMP FastTree
 
+# (iqtree2) iqtree2 1.6.12 
+wget https://github.com/iqtree/iqtree2/releases/download/v2.1.2/iqtree-2.1.2-Linux.tar.gz
+tar -zxvf iqtree-2.1.2-Linux.tar.gz
+mv iqtree-2.1.2-Linux/bin/iqtree2 .
+rm -r iqtree-2.1.2-Linux
+rm iqtree-2.1.2-Linux.tar.gz
+
+# (ALE) amalgamated likelihood estimation
+# instructions here: https://github.com/ssolo/ALE/blob/master/INSTALL.md
+# less useful: https://github.com/BioPP/bpp-documentation/wiki/Installation#user-content-Compiling_from_source
+# 1. make sure packages openmpi boost cmake doxygen eigen are installed using package manager
+# pacman -S boost cmake doxygen eigen
+
+# 2. then, install bio++ libraries, version 2.4.1:
+cd $PROGRAMS_ROOT
+mkdir ale-install
+mkdir ale
+cd ale-install
+git clone https://github.com/BioPP/bpp-core
+git clone https://github.com/BioPP/bpp-seq
+git clone https://github.com/BioPP/bpp-phyl
+mkdir bpp-core-build
+mkdir bpp-seq-build
+mkdir bpp-phyl-build
+cd bpp-core
+git checkout tags/v2.4.1 -b version2.4.1
+
+# 2a. need to fix an error in the code:
+sed "45i #include <limits>" src/Bpp/Graph/GlobalGraph.cpp
+#
+
+cd ../bpp-seq
+git checkout tags/v2.4.1 -b version2.4.1
+cd ../bpp-phyl
+git checkout tags/v2.4.1 -b version2.4.1
+
+cd ../bpp-core-build/
+cmake ../bpp-core -DCMAKE_INSTALL_PREFIX=$PROGRAMS_ROOT/ale/ -DBUILD_TESTING=FALSE
+make
+make install
+
+cd ../bpp-seq-build/
+cmake ../bpp-seq -DCMAKE_INSTALL_PREFIX=$PROGRAMS_ROOT/ale/ -DBUILD_TESTING=FALSE -DCMAKE_PREFIX_PATH=$PROGRAMS_ROOT/ale
+make
+make install
+
+cd ../bpp-phyl-build/
+cmake ../bpp-phyl -DCMAKE_INSTALL_PREFIX=$PROGRAMS_ROOT/ale/ -DBUILD_TESTING=FALSE -DCMAKE_PREFIX_PATH=$PROGRAMS_ROOT/ale
+make
+make install
+
+# 3. finally, install ALE:
+cd ..
+git clone https://github.com/ssolo/ALE.git
+mkdir ALE-build
+cd ALE-build
+cmake -DCMAKE_PREFIX_PATH=/bio/bin/ale ../ALE
+cp bin/* $PROGRAMS_ROOT/ale
+
 #(pplacer) pplacer 1.1.alpha19 https://github.com/matsen/pplacer
 wget https://github.com/matsen/pplacer/releases/download/v1.1.alpha19/pplacer-Linux-v1.1.alpha19.zip
 unzip pplacer-Linux-v1.1.alpha19.zip
@@ -134,8 +193,8 @@ cd $PROGRAMS_ROOT
 mv hmmer-2.3.2 hmmer2
 rm hmmer-2.3.2.tar.gz
 
-#(diamond) diamond 2.0.15 https://github.com/bbuchfink/diamond
-wget https://github.com/bbuchfink/diamond/releases/download/v2.0.15/diamond-linux64.tar.gz
+#(diamond) diamond 2.1.6 https://github.com/bbuchfink/diamond
+wget https://github.com/bbuchfink/diamond/releases/download/v2.1.6/diamond-linux64.tar.gz
 tar -xf diamond-linux64.tar.gz
 rm diamond-linux64.tar.gz
 
@@ -460,6 +519,25 @@ $PROGRAMS_ROOT/python-env/bin/pip install signalp6_fast/signalp-6-package
 cp -r $PROGRAMS_ROOT/python-env/signalp6_fast/signalp-6-package/models/* $PROGRAMS_ROOT/python-env/lib/python3.10/site-packages/signalp/model_weights/
 rm $PROGRAMS_ROOT/python-env/signalp-6.0g.fast.tar.gz
 
+# (checkm2)
+cd $PROGRAMS_ROOT
+wget https://www.python.org/ftp/python/3.8.16/Python-3.8.16.tgz
+tar -zxvf Python-3.8.16.tgz
+mkdir python38
+cd Python-3.8.16
+./configure --prefix=$PROGRAMS_ROOT/python38/
+make
+make install
+cd $PROGRAMS_ROOT
+virtualenv --python=$PROGRAMS_ROOT/python38/bin/python3.8 checkm2
+source checkm2/bin/activate
+pip install checkm2
+# because setup.py does not set some versions of dependencies correctly, some tweaking is needed:
+
+checkm2 database --download --path /bio/databases/checkm2/
+# can run checkm2 testrun
+deactivate
+
 cd $PROGRAMS_ROOT
 python -m virtualenv antismash-env
 cd antismash-env
@@ -517,6 +595,7 @@ PATH=$PATH:$BIOINF_PREFIX/rmblast/bin
 PATH=$PATH:$BIOINF_PREFIX/genometools/bin
 PATH=$PATH:$BIOINF_PREFIX/DAS_Tool
 PATH=$PATH:$BIOINF_PREFIX/minced
+PATH=$PATH:$BIOINF_PREFIX/ale
 
 
 PATH=$PATH:$BIOINF_PREFIX/perl/bin
