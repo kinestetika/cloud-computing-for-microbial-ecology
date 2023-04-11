@@ -142,6 +142,13 @@ cd ALE-build
 cmake -DCMAKE_PREFIX_PATH=/bio/bin/ale ../ALE
 cp bin/* $PROGRAMS_ROOT/ale
 
+#(consel) https://github.com/shimo-lab/consel.git
+git clone https://github.com/shimo-lab/consel.git
+cd consel/src
+make
+mkdir ../bin
+cp catass catci catmt catpv catrep consel makerep makermt randrep treeass ../bin/
+
 #(pplacer) pplacer 1.1.alpha19 https://github.com/matsen/pplacer
 wget https://github.com/matsen/pplacer/releases/download/v1.1.alpha19/pplacer-Linux-v1.1.alpha19.zip
 unzip pplacer-Linux-v1.1.alpha19.zip
@@ -596,7 +603,7 @@ PATH=$PATH:$BIOINF_PREFIX/genometools/bin
 PATH=$PATH:$BIOINF_PREFIX/DAS_Tool
 PATH=$PATH:$BIOINF_PREFIX/minced
 PATH=$PATH:$BIOINF_PREFIX/ale
-
+PATH=$PATH:$BIOINF_PREFIX/consel/bin
 
 PATH=$PATH:$BIOINF_PREFIX/perl/bin
 export PATH
