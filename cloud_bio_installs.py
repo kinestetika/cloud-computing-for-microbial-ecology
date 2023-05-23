@@ -205,11 +205,11 @@ wget https://github.com/bbuchfink/diamond/releases/download/v2.1.6/diamond-linux
 tar -xf diamond-linux64.tar.gz
 rm diamond-linux64.tar.gz
 
-#(ncbi-blast) blastn 2.13.0 https://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/LATEST/
-wget https://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/LATEST/ncbi-blast-2.13.0+-x64-linux.tar.gz
-tar -xf ncbi-blast-2.13.0+-x64-linux.tar.gz
-mv ncbi-blast-2.13.0+ ncbi-blast
-rm ncbi-blast-2.13.0+-x64-linux.tar.gz
+#(ncbi-blast) blastn 2.14.0 https://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/LATEST/
+wget https://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/LATEST/ncbi-blast-2.14.0+-x64-linux.tar.gz
+tar -xf ncbi-blast-2.14.0+-x64-linux.tar.gz
+mv ncbi-blast-2.14.0+ ncbi-blast
+rm ncbi-blast-2.14.0+-x64-linux.tar.gz
 
 #(infernal) cmsearch 1.1.4 http://eddylab.org/infernal/
 wget http://eddylab.org/infernal/infernal-1.1.4-linux-intel-gcc.tar.gz
@@ -218,10 +218,8 @@ mv infernal-1.1.4-linux-intel-gcc infernal
 rm infernal-1.1.4-linux-intel-gcc.tar.gz
 
 #(phyloflash) phyloFlash.pl 3.4 https://github.com/HRGV/phyloFlash/
-wget https://github.com/HRGV/phyloFlash/archive/refs/tags/pf3.4.tar.gz
-tar -xf pf3.4.tar.gz
-mv phyloFlash-pf3.4 phyloflash
-rm pf3.4.tar.gz
+# (assuming we have channels defaults, bioconda and conda-forge
+micromamba create -n phyloflash-conda-env phyloflash
 
 #(uchime) uchime 4.2.40 https://drive5.com/uchime/uchime_download.html
 wget https://drive5.com/uchime/uchime4.2.40_i86linux32
@@ -319,7 +317,7 @@ rm idba-1.1.3.tar.gz
 ln -sf idba-1.1.3/bin idba
 
 #(SPAdes) spades.py 3.15.5 https://github.com/ablab/spades
-wget http://cab.spbu.ru/files/release3.15.5/SPAdes-3.15.5-Linux.tar.gz
+wget https://github.com/ablab/spades/releases/download/v3.15.5/SPAdes-3.15.5-Linux.tar.gz
 tar -xzf SPAdes-3.15.5-Linux.tar.gz
 ln -sf SPAdes-3.15.5-Linux spades
 rm SPAdes-3.15.5-Linux.tar.gz
@@ -346,9 +344,16 @@ mv FragGeneScan1.31 fraggenescan
 rm download
 
 #(metabat) metabat 2.12.1 https://bitbucket.org/berkeleylab/metabat/downloads/
-wget https://bitbucket.org/berkeleylab/metabat/downloads/metabat-static-binary-linux-x64_v2.12.1.tar.gz
-tar -zxf metabat-static-binary-linux-x64_v2.12.1.tar.gz
-rm metabat-static-binary-linux-x64_v2.12.1.tar.gz
+wget https://bitbucket.org/berkeleylab/metabat/get/
+unzip 40efa2dc2964.zip
+cd berkeleylab-metabat-40efa2dc2964
+mkdir build
+cd build
+cmake .. -DCMAKE_INSTALL_PREFIX=$PROGRAMS_ROOT/berkeleylab-metabat-40efa2dc2964
+make
+make install
+mv berkeleylab-metabat-40efa2dc2964 metabat
+rm 40efa2dc2964.zip
 
 #(guppy-cpu) guppy_basecaller 6.3.7 https://community.nanoporetech.com
 cp /bio/downloads/ont-guppy-cpu_6.3.7_linux64.tar.gz .
@@ -448,7 +453,8 @@ cd cimfomfa-22-273
 ./configure --prefix=/bio/bin --disable-shared
 make
 make install
-tar xzf mcl-22-282.tar.gz
+cd ..
+tar -xf mcl-22-282.tar.gz
 cd mcl-22-282
 ./configure CFLAGS=-I$PROGRAMS_ROOT/include LDFLAGS=-L$PROGRAMS_ROOT/lib --prefix=$PROGRAMS_ROOT --enable-rcl
 make
@@ -762,7 +768,8 @@ def main():
     log('[1] you will need to install some packages using your linux distro\'s package manager (e.g. apt). On arch:')
     log('pacman -S gnuplot cpanminus fig2dev boost zip unzip python-pip python-virtualenv python-h5py tk curl '
         'r gawk jre-openjdk ruby cuda cairo pango gsl jdk-openjdk graphviz xerces-c pigz git glpk ncurses '
-        'gcc-fortran')
+        'gcc-fortran libxcrypt-compat openmpi cmake doxygen eigen base-devel python-wget')
+    log('We also need to install micromamba from the AUR and run "micromamba shell init -p /bio/bin/micromamba".')
     log('[2] Some program require manual downloads: signalp, tmhmm and guppy. First create the folder "/bio/bin/downloads"'
         '. Then, download these programs and place them in that folder. Also, if you need a non standard python version,'
         'compile it and place the python executable in that folder. Otherwise, create a symlink to the standard python'
