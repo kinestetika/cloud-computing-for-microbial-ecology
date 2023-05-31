@@ -237,7 +237,6 @@ git clone https://github.com/xiaoli-dong/metaamp.git
 mkdir metaamp/bin/programs
 ln -sf /bio/bin/mothur metaamp/bin/programs/
 
-
 #(mummer) mummer 4.0.0rc1 https://github.com/mummer4/mummer
 wget https://github.com/mummer4/mummer/releases/download/v4.0.0rc1/mummer-4.0.0rc1.tar.gz
 tar -xf mummer-4.0.0rc1.tar.gz
@@ -486,12 +485,14 @@ unzip db.zip
 cd $PROGRAMS_ROOT
 rm 1.1.4.tar.gz
 
+#(Flye) Flye 2.9.2 https://github.com/fenderglass/Flye
+micromamba create -n flye-conda-env flye
+
 #(python) XXX XX XX
 # python programs and modules
 #python -m virtualenv python-env -p /bio/downloads/python
 python -m virtualenv python-env
 python-env/bin/python -m pip install --upgrade pip
-python-env/bin/pip install --upgrade numpy
 python-env/bin/pip install --upgrade matplotlib
 python-env/bin/pip install --upgrade pysam
 python-env/bin/pip install --upgrade checkm-genome
@@ -501,7 +502,7 @@ python-env/bin/pip install --upgrade EukRep
 python-env/bin/pip install --upgrade gtdbtk
 python-env/bin/pip install --upgrade iRep
 python-env/bin/pip install --upgrade calisp
-python-env/bin/pip install https://github.com/RasmussenLab/vamb/archive/v3.0.3.zip
+python-env/bin/pip install --upgrade vamb
 python-env/bin/pip install --upgrade scikit-learn imbalanced-learn pandas seaborn screed click mamba ruamel.yaml snakemake
 python-env/bin/pip install --upgrade jupyter pyarrow build twine ipympl
 python-env/bin/pip install --upgrade metaerg
@@ -510,10 +511,6 @@ cd python-env
 git clone https://github.com/jiarong/VirSorter2.git
 cd VirSorter2
 $PROGRAMS_ROOT/python-env/bin/pip install -e .
-cd ..
-git clone https://github.com/fenderglass/Flye
-cd Flye
-$PROGRAMS_ROOT/python-env/bin/python setup.py install
 cd ..
 git clone https://github.com/BinPro/CONCOCT.git
 cd CONCOCT
@@ -530,7 +527,7 @@ ln -sf MinPath/MinPath.py bin
 cp /bio/downloads/signalp-6.0g.fast.tar.gz .
 tar -xf signalp-6.0g.fast.tar.gz
 $PROGRAMS_ROOT/python-env/bin/pip install signalp6_fast/signalp-6-package
-cp -r $PROGRAMS_ROOT/python-env/signalp6_fast/signalp-6-package/models/* $PROGRAMS_ROOT/python-env/lib/python3.10/site-packages/signalp/model_weights/
+cp -r $PROGRAMS_ROOT/python-env/signalp6_fast/signalp-6-package/models/* $PROGRAMS_ROOT/python-env/lib/python3.11/site-packages/signalp/model_weights/
 rm $PROGRAMS_ROOT/python-env/signalp-6.0g.fast.tar.gz
 
 # (checkm2)
