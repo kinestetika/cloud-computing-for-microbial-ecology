@@ -41,9 +41,16 @@ ln -sf nseg-1.0.1/nmerge nmerge
 rm v1.0.1.tar.gz
 
 #(java -jar $PROGRAMS_ROOT/BMGE/src/BMGE.jar) bmge 2.0 https://research.pasteur.fr/en/software/bmge-block-mapping-and-gathering-with-entropy/
+# on arch linux may need to use pacman to install https://aur.archlinux.org/packages/jdk20-graalvm-bin first 
+# and then run something like "archlinux-java status" "archlinux-java set java-20-graalv" or similar, as root, first
 git clone https://gitlab.pasteur.fr/GIPhy/BMGE.git
 cd BMGE/src
 javac BMGE.java
+/usr/lib/jvm/java-20-graalvm/lib/svm/bin/native-image BMGE BMGE
+cd $PROGRAMS_ROOT
+mv BMGE BMGE2.0
+ln -sf BMGE2.0/src/BMGE .
+
 #echo Main-Class: BMGE > MANIFEST.MF
 #jar -cmvf MANIFEST.MF BMGE.jar BMGE.class bmge/*.class
 #rm MANIFEST.MF BMGE.class bmge/*.class
