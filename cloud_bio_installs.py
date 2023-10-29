@@ -43,6 +43,8 @@ rm v1.0.1.tar.gz
 #(java -jar $PROGRAMS_ROOT/BMGE/src/BMGE.jar) bmge 2.0 https://research.pasteur.fr/en/software/bmge-block-mapping-and-gathering-with-entropy/
 # on arch linux may need to use pacman to install https://aur.archlinux.org/packages/jdk20-graalvm-bin first 
 # and then run something like "archlinux-java status" "archlinux-java set java-20-graalv" or similar, as root, first
+# or follow instructions here: https://www.graalvm.org/latest/docs/getting-started/linux/ for java21 version
+# can run javac and native-image directly from bin dir in package
 git clone https://gitlab.pasteur.fr/GIPhy/BMGE.git
 cd BMGE/src
 javac BMGE.java
@@ -90,18 +92,18 @@ chmod a+x FastTreeMP
 ln -sf FastTreeMP fasttree
 ln -sf FastTreeMP FastTree
 
-# (iqtree2) iqtree2 1.6.12 
-wget https://github.com/iqtree/iqtree2/releases/download/v2.1.2/iqtree-2.1.2-Linux.tar.gz
-tar -zxvf iqtree-2.1.2-Linux.tar.gz
-mv iqtree-2.1.2-Linux/bin/iqtree2 .
-rm -r iqtree-2.1.2-Linux
-rm iqtree-2.1.2-Linux.tar.gz
+# (iqtree2) iqtree2 2.2.2.7 
+wget https://github.com/iqtree/iqtree2/releases/download/v2.2.2.7/iqtree-2.2.2.7-Linux.tar.gz
+tar -zxvf iqtree-2.2.2.7-Linux.tar.gz
+mv iqtree-2.2.2.7-Linux/bin/iqtree2 .
+rm -r iqtree-2.2.2.7-Linux
+rm iqtree-2.2.2.7-Linux.tar.gz
 
 # (ALE) amalgamated likelihood estimation
 # instructions here: https://github.com/ssolo/ALE/blob/master/INSTALL.md
 # less useful: https://github.com/BioPP/bpp-documentation/wiki/Installation#user-content-Compiling_from_source
 # 1. make sure packages openmpi boost cmake doxygen eigen are installed using package manager
-# pacman -S boost cmake doxygen eigen
+# pacman -S openmpi boost cmake doxygen eigen
 
 # 2. then, install bio++ libraries, version 2.4.1:
 cd $PROGRAMS_ROOT
@@ -162,11 +164,11 @@ unzip pplacer-Linux-v1.1.alpha19.zip
 mv pplacer-Linux-v1.1.alpha19 pplacer
 rm pplacer-Linux-v1.1.alpha19.zip
 
-#(vsearch) vsearch 2.21.2 https://github.com/torognes/vsearch
-wget https://github.com/torognes/vsearch/releases/download/v2.21.2/vsearch-2.21.2-linux-x86_64-static.tar.gz
-tar -xf vsearch-2.21.2-linux-x86_64-static.tar.gz
-ln -sf vsearch-2.21.2-linux-x86_64-static vsearch
-rm vsearch-2.21.2-linux-x86_64-static.tar.gz
+#(vsearch) vsearch 2.23.0 https://github.com/torognes/vsearch
+wget https://github.com/torognes/vsearch/releases/download/v2.23.0/vsearch-2.23.0-linux-x86_64-static.tar.gz
+tar -xf vsearch-2.23.0-linux-x86_64-static.tar.gz
+ln -sf vsearch-2.23.0-linux-x86_64-static vsearch
+rm vsearch-2.23.0-linux-x86_64-static.tar.gz
 
 #(usearch) usearch 11.0.667 https://drive5.com/usearch/download.html
 wget https://drive5.com/downloads/usearch11.0.667_i86linux32.gz
@@ -174,18 +176,18 @@ gunzip usearch11.0.667_i86linux32.gz
 chmod a+x usearch11.0.667_i86linux32
 ln -sf usearch11.0.667_i86linux32 usearch
 
-#(hmmer-3) hmmsearch 3.3.2 http://hmmer.org
-wget http://eddylab.org/software/hmmer/hmmer-3.3.2.tar.gz
-tar -xf hmmer-3.3.2.tar.gz
-cd hmmer-3.3.2
-./configure --prefix=$PROGRAMS_ROOT/hmmer-3.3.2 
+#(hmmer-3) hmmsearch 3.4 http://hmmer.org
+wget http://eddylab.org/software/hmmer/hmmer-3.4.tar.gz
+tar -xf hmmer-3.4.tar.gz
+cd hmmer-3.4
+./configure --prefix=$PROGRAMS_ROOT/hmmer-3.4 
 make
 make install
 cd easel
 make install
 cd $PROGRAMS_ROOT
-mv hmmer-3.3.2 hmmer3
-rm hmmer-3.3.2.tar.gz
+mv hmmer-3.4 hmmer3
+rm hmmer-3.4.tar.gz
 
 #(hmmer-2) hmmsearch2 2.3.2 http://hmmer.org/
 wget http://eddylab.org/software/hmmer/hmmer-2.3.2.tar.gz
@@ -207,8 +209,8 @@ cd $PROGRAMS_ROOT
 mv hmmer-2.3.2 hmmer2
 rm hmmer-2.3.2.tar.gz
 
-#(diamond) diamond 2.1.6 https://github.com/bbuchfink/diamond
-wget https://github.com/bbuchfink/diamond/releases/download/v2.1.6/diamond-linux64.tar.gz
+#(diamond) diamond 2.1.8 https://github.com/bbuchfink/diamond
+wget https://github.com/bbuchfink/diamond/releases/download/v2.1.8/diamond-linux64.tar.gz
 tar -xf diamond-linux64.tar.gz
 rm diamond-linux64.tar.gz
 
@@ -218,11 +220,11 @@ tar -xf ncbi-blast-2.14.0+-x64-linux.tar.gz
 mv ncbi-blast-2.14.0+ ncbi-blast
 rm ncbi-blast-2.14.0+-x64-linux.tar.gz
 
-#(infernal) cmsearch 1.1.4 http://eddylab.org/infernal/
-wget http://eddylab.org/infernal/infernal-1.1.4-linux-intel-gcc.tar.gz
-tar -xf infernal-1.1.4-linux-intel-gcc.tar.gz
-mv infernal-1.1.4-linux-intel-gcc infernal
-rm infernal-1.1.4-linux-intel-gcc.tar.gz
+#(infernal) cmsearch 1.1.5 http://eddylab.org/infernal/
+wget http://eddylab.org/infernal/infernal-1.1.5-linux-intel-gcc.tar.gz
+tar -xf infernal-1.1.5-linux-intel-gcc.tar.gz
+mv infernal-1.1.5-linux-intel-gcc infernal
+rm infernal-1.1.5-linux-intel-gcc.tar.gz
 
 #(phyloflash) phyloFlash.pl 3.4 https://github.com/HRGV/phyloFlash/
 # (assuming we have channels defaults, bioconda and conda-forge
@@ -551,7 +553,7 @@ virtualenv --python=$PROGRAMS_ROOT/python38/bin/python3.8 checkm2
 source checkm2/bin/activate
 pip install checkm2
 # because setup.py does not set some versions of dependencies correctly, some tweaking is needed:
-
+# last time trying checkm2 throws errors, also after micromamba installation
 checkm2 database --download --path /bio/databases/checkm2/
 # can run checkm2 testrun
 deactivate
